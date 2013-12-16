@@ -39,44 +39,7 @@
 <script>
     $(function () {
         $("#create-event-btn").on("click", function (event) {
-            event.preventDefault();
-            $("#create-event-container")
-               .load('@Url.Action("Create")')
-               .dialog({
-                   autoOpen: true,
-                   title: 'Create new event',
-                   modal: true,
-                   width: 400                   
-               })
+            site.core.redirect('@Url.Action("Create")');
         });
-
-        $(".cancel-ui-button")
     });
-
-    $(document).on("click",".btn-cancel", function (event) {
-        event.preventDefault();
-        $('#create-event-container').dialog('close');
-    });
-
-    $(document).on("click", "form .btn-primary", function (event) {
-       // $("#CreateNewFarmForm").validate();
-        event.preventDefault();
-
-        if ($("#CreateNewEvent").valid()) {
-            
-            $.ajaxUnobtrusive({
-                beforeSend: function () {
-                },
-                type: "POST",
-                url: '@Url.Action("CreateEvent")',
-                data: $("#CreateNewEvent").serialize(),
-                success: function (html) {
-                    
-                }
-            });
-        }
-
-        return false;
-    });
-
 </script>

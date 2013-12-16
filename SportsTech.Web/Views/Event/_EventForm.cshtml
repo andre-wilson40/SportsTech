@@ -1,0 +1,33 @@
+﻿@model SportsTech.Web.ViewModels.Event.CreateViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Against, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Against)
+        @Html.ValidationMessageFor(model => model.Against)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.IsHomeGame, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.IsHomeGame)
+        @Html.ValidationMessageFor(model => model.IsHomeGame)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Referee, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Referee)
+        @Html.ValidationMessageFor(model => model.Referee)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EventDate, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.EventDate)
+        @Html.ValidationMessageFor(model => model.EventDate)
+    </div>
+</div>

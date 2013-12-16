@@ -96,7 +96,6 @@ site.core = {
     }
 };
 
-
 $.extend({
 
     ajaxLoad: function (element$, options) {

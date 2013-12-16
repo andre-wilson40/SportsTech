@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SportsTech.Web.ViewModels.Event;
 using SportsTech.Web.Filters;
+using System.Threading.Tasks;
 
 namespace SportsTech.Web.Controllers
 {
@@ -34,23 +35,22 @@ namespace SportsTech.Web.Controllers
         }
 
         [HttpGet]
-        [HttpAjax]
         public ActionResult Create()
         {
             var viewModel = new CreateViewModel();
 
             // Returns a partial for creating a game
-            return PartialView("_Create", viewModel);
+            return View("Create", viewModel);
         }
 
         [HttpPost]
-        public ActionResult CreateEvent(CreateViewModel viewModel)
+        public async Task<ActionResult> Create(CreateViewModel viewModel)
         {
             // Handle this better?
             if (!ModelState.IsValid) return PartialView("_Create", viewModel);
 
-            // TODO:  Persist model to database
-
+            // TODO:  Persist model to database ensuring the db operations are async
+            
             return RedirectToAction("Edit", 0);
         }
 
@@ -58,6 +58,13 @@ namespace SportsTech.Web.Controllers
         public ActionResult Edit(int id)
         {
             return View("Edit");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Dashboard(int id)
+        {
+            // Return the view that contains the full event details for this game
+            return View("Dashboard");
         }
 	}
 }
