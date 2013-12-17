@@ -11,27 +11,34 @@ namespace SportsTech.Web.Controllers
 {
     public class EventController : Controller
     {
-        //
-        // GET: /Event/
-        [ChildActionOnly]
-        public ActionResult List()
+        [HttpPost]
+        public ActionResult DataTable(Datatables.Mvc.DataTable dataTableParams) 
         {
-            var ev = new List<ListItemViewModel>();
-            ev.Add(new ListItemViewModel
-                {
-                    Id = 0,
-                    EventDate = DateTime.Now,
-                    IsHomeGame = true,
-                    Name = "Waihou vs Cobras",
-                    Score = "26 - 5"
-                });
+            int recordCount = 1;
+            int filteredRecordCount = 1;
 
-            var viewModel = new ListViewModel
-            {
-                Events = ev
+            var tableData = new string[] {
+                "0",
+                "Waihou vs Cobras",
+                DateTime.Now.ToString(),
+                "Home",
+                "26 - 5",
+                string.Empty // Delete
             };
 
-            return PartialView("_List", viewModel);
+            return Json(new
+            {
+                dataTableParams.sEcho,
+                iTotalRecords = recordCount,
+                iTotalDisplayRecords = filteredRecordCount,
+                aaData = new List<string[]> { tableData }
+            });
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> List()
+        {        
+            return View("List");
         }
 
         [HttpGet]

@@ -12,9 +12,9 @@ namespace SportsTech.Web
 
             // Filter binding implemented using the NinJect MVC3 extension
             // http://www.planetgeek.ch/2010/11/13/official-ninject-mvc-extension-gets-support-for-mvc3/#more-2004
-            filters.Add(new HttpAjaxRedirectFilter());
+            //filters.Add(new HttpAjaxRedirectFilter());
 
-            //this.BindFilter<HttpAjaxRedirectFilter>(FilterScope.Action, 1).WhenActionMethodHas<HttpAjaxAttribute>();
+            //BindFilter<HttpAjaxRedirectFilter>(FilterScope.Action, 1).WhenActionMethodHas<HttpAjaxAttribute>();
         }
     }
 }

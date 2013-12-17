@@ -22,10 +22,16 @@ namespace SportsTech.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap.datatables.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(                      
+                "~/Scripts/jquery.dataTables.js"));//,
+            //    "~/Scripts/jquery.ext.dataTables.js"));
+
+
             bundles.Add(new ScriptBundle("~/bundles/core").Include(
-                        "~/Scripts/site.*"));
+                        "~/Scripts/site.core.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
