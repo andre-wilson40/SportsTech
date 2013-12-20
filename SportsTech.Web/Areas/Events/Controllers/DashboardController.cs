@@ -4,15 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SportsTech.Web.Controllers
+namespace SportsTech.Web.Areas.Events.Controllers
 {
     public class DashboardController : Controller
     {
-        [HttpGet]
+        //
+        // GET: /Events/Dashboard/
         public ActionResult Index()
         {
-            //return View();
-            return RedirectToAction("List", "Event", new { Area = "Events" });
+            return View();
         }
 	}
 }

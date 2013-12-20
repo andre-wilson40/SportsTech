@@ -6,7 +6,7 @@ using System.ComponentModel;
 using FluentValidation;
 using FluentValidation.Attributes;
 
-namespace SportsTech.Web.ViewModels.Event
+namespace SportsTech.Web.Areas.Events.ViewModels.Event
 {
     [Validator(typeof(CreateEventViewModelValidator))]
     public class CreateViewModel

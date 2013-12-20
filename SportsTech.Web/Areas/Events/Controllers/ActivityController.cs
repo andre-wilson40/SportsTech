@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SportsTech.Web.ViewModels.EventDashboard;
+using SportsTech.Web.Areas.Events.ViewModels.Activity;
 
-namespace SportsTech.Web.Controllers
+namespace SportsTech.Web.Areas.Events.Controllers
 {
-    public class EventDashboardController : Controller
+    public class ActivityController : Controller
     {
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult ActivityList(int id)
+        public ActionResult List(int eventId)
         {
-            var viewModel = new EventActivityListViewModel
+            var viewModel = new ListViewModel
             {
-                ActivityHistory = new List<EventActivityViewModel>
+                ActivityHistory = new List<ListItemViewModel>
                 {
-                    new EventActivityViewModel
+                    new ListItemViewModel
                     {
                         Description = "Penalty",
                         OccuredAt = DateTime.Now,
-                        User = new EventActivityUserViewModel
+                        User = new PersonViewModel
                         {
                             Id = 1,
                             Name = "Andre Wilson"
                         }   
                     },
-                    new EventActivityViewModel
+                    new ListItemViewModel
                     {
                         Description = "Try",
                         OccuredAt = DateTime.Now.AddMinutes(5),
-                        User = new EventActivityUserViewModel
+                        User = new PersonViewModel
                         {
                             Id = 1,
                             Name = "Daniel Carter"
@@ -40,7 +40,7 @@ namespace SportsTech.Web.Controllers
                 }
             };
 
-            return View("ActivityList", viewModel);
+            return View("List", viewModel);
         }
 	}
 }

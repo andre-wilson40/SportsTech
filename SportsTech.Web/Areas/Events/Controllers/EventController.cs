@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SportsTech.Web.ViewModels.Event;
 using SportsTech.Web.Filters;
 using System.Threading.Tasks;
+using SportsTech.Web.Areas.Events.ViewModels.Event;
 
-namespace SportsTech.Web.Controllers
+namespace SportsTech.Web.Areas.Events.Controllers
 {
     public class EventController : Controller
     {

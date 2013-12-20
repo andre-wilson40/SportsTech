@@ -1,0 +1,9 @@
+﻿@model SportsTech.Web.Areas.Events.ViewModels.Activity.ListViewModel
+
+@foreach (var activity in Model.ActivityHistory)
+{
+    <div>
+        @string.Format("{0} @ {1} by {2}", activity.Description, activity.OccuredAt, activity.User.Name)
+    </div>
+}
+
