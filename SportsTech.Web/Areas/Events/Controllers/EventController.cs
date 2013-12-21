@@ -66,12 +66,5 @@ namespace SportsTech.Web.Areas.Events.Controllers
         {
             return View("Edit");
         }
-
-        [HttpGet]
-        public async Task<ActionResult> Dashboard(int id)
-        {
-            // Return the view that contains the full event details for this game
-            return View("Dashboard");
-        }
 	}
 }

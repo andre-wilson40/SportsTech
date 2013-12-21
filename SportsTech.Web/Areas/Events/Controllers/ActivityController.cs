@@ -40,7 +40,7 @@ namespace SportsTech.Web.Areas.Events.Controllers
                 }
             };
 
-            return View("List", viewModel);
+            return PartialView("_List", viewModel);
         }
 	}
 }

@@ -8,7 +8,7 @@ namespace SportsTech.Web.Areas.Events.ViewModels.Dashboard
 {
     public class DashboardViewModel
     {
-        // Event details
+        public int Id { get; set; }
 
     }
 

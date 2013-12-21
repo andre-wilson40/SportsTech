@@ -305,6 +305,7 @@
     <Content Include="Areas\Events\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Events\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Events\Views\Activity\_List.cshtml" />
+    <Content Include="Areas\Events\Views\Dashboard\View.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -358,12 +359,10 @@
     <Content Include="Areas\Events\Views\Event\List.cshtml" />
     <Content Include="Areas\Events\Views\Event\Create.cshtml" />
     <Content Include="Areas\Events\Views\Event\_EventForm.cshtml" />
-    <Content Include="Areas\Events\Views\Event\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Events\Models\" />
-    <Folder Include="Areas\Events\Views\Dashboard\" />
     <Folder Include="Library\" />
     <Folder Include="ViewModels\Dashboard\" />
     <Folder Include="ViewModels\Home\" />

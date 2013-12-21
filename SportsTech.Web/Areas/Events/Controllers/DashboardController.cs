@@ -8,11 +8,15 @@ namespace SportsTech.Web.Areas.Events.Controllers
 {
     public class DashboardController : Controller
     {
-        //
-        // GET: /Events/Dashboard/
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult View(int id)
         {
-            return View();
+            var viewModel = new SportsTech.Web.Areas.Events.ViewModels.Dashboard.DashboardViewModel
+            {
+                Id = id
+            };
+
+            return View("View", viewModel);
         }
 	}
 }
