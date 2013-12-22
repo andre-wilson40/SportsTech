@@ -42,5 +42,35 @@ namespace SportsTech.Web.Areas.Events.Controllers
 
             return PartialView("_List", viewModel);
         }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult Available(int eventId)
+        {
+            var viewModel = new AvailableViewModel
+            {
+                Events = new List<ActivityEventViewModel>
+                {
+                    new ActivityEventViewModel { Id = 1, Name = "Penalty" },
+                    new ActivityEventViewModel { Id = 2, Name = "Ruck" }
+                }
+            };
+
+            return PartialView("_Available", viewModel);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult SystemDefined(int eventId)
+        {
+            return PartialView("_SystemDefined", eventId);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult Stoppages(int eventId)
+        {
+            return PartialView("_Stoppages", eventId);
+        }
 	}
 }

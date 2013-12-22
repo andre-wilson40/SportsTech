@@ -39,3 +39,15 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* ****************************************************************
+    Twitter bootstrap extensions */
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.top-buffer { margin-top:10px; }
+
+/* ***************************************************************** */

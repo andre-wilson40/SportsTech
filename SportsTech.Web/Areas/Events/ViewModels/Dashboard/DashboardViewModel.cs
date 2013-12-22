@@ -8,7 +8,19 @@ namespace SportsTech.Web.Areas.Events.ViewModels.Dashboard
 {
     public class DashboardViewModel
     {
+        public DashboardViewModel()
+        {
+            Home = new TeamViewModel();
+            Away = new TeamViewModel();
+        }
+
         public int Id { get; set; }
+
+        public TimeSpan ElapsedTime { get; set; }
+
+        public TeamViewModel Home { get; set; }
+
+        public TeamViewModel Away { get; set; }
 
     }
 

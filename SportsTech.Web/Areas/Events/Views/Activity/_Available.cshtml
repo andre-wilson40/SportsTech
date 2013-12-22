@@ -1,0 +1,10 @@
+﻿@model SportsTech.Web.Areas.Events.ViewModels.Activity.AvailableViewModel
+
+<div class="center-block text-center">
+    @foreach (var available in Model.Events)
+    {
+        <div class="row top-buffer center-block text-center" >
+            @Html.Partial("_ActivityEvents", available)
+        </div>
+    }
+</div>
