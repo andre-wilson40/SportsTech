@@ -6,22 +6,49 @@
                 { sName: "Name" },
                 { sName: "Score" },
                 { sName: "Event date" },
-                { sName: "Home Game" }
+                { sName: "Home Game" },
+                { sName: "Dashboard", sClass: "action dashboard-row", sWidth: 8, fnRender: renderDashboardIcon, bSortable: false }
             ],
             dataTableLoadUrl: '@Url.Action("DataTable")',
             dataTableEditUrl: '@Url.Action("View", "Dashboard")',            
             dataTableShowDelete: true                
         };
 
+        function renderDashboardIcon(row) {
+            var id = row.aData[0];
+            return '<a href="#" class="dashboard" data-item-id="' + id + '"><i title="Dashboard" class="glyphicon glyphicon-random"></i></a>';
+        }
+
         $(function () {
             $("#create-event-btn").on("click", function (event) {
                 site.core.redirect('@Url.Action("Create")');
             });
+
+            $(document).on('click', '#dtable tbody .dashboard-row', function () {
+                var itemId = $(this).children('a').attr("data-item-id");
+                return goToDashboard(itemId);
+            });
+
+            $(document).on('click', '#dtable tbody .dashboard', function () {
+                var itemId = $(this).attr("data-item-id");
+                return goToDashboard(itemId);
+            });
+
+            function goToDashboard(itemId) {
+                var url = '@Url.Action("Edit", "Event", new { area = "Events" })';
+                site.core.redirect(url + "/" + itemId);
+                return false;
+            }
         });
     </script>
 
     <script src="~/Scripts/site.dataTable.js"></script>
 }
+
+@section dialogs {
+    @{  Html.RenderAction("Delete", "Dialog", new { area ="", dialog = new SportsTech.Web.ViewModels.Shared.DeleteDialogViewModel { ControllerName = "Event", Area="Events" } }); }
+}
+
 <p>    
     <button id="create-event-btn" class="btn btn-primary">Create</button>
 </p>
@@ -34,6 +61,7 @@
             <th>Score</th>
             <th>Event date</th>
             <th>Home Game</th>
+            <th></th>
             <th></th>
         </tr>
     </thead>

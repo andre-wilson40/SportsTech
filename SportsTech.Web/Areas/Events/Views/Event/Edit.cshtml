@@ -1,0 +1,34 @@
+﻿@model SportsTech.Web.Areas.Events.ViewModels.Event.CreateViewModel
+
+@{
+    ViewBag.Title = "Edit event";
+}
+
+@using (Html.BeginForm("Edit", "Event", FormMethod.Post, new { id = "EditNewEvent" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        @Html.Partial("_EventForm", Model)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="cancel-edit-btn" type="submit" value="Save changes" class="btn btn-primary" />
+                <input id="cancel-event-btn" type="button" value="Cancel" class="btn btn-default btn-cancel" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $('#cancel-event-btn').on('click', function () {
+                site.core.redirect('@Url.Action("List", "Event")');
+            });
+        });
+    </script>
+}

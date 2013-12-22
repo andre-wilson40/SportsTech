@@ -25,7 +25,7 @@ namespace SportsTech.Web
                       "~/Scripts/bootstrap.datatables.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(                      
+            bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
                 "~/Scripts/jquery.dataTables.js"));//,
             //    "~/Scripts/jquery.ext.dataTables.js"));
 

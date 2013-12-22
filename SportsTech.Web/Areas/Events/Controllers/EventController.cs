@@ -18,11 +18,12 @@ namespace SportsTech.Web.Areas.Events.Controllers
             int filteredRecordCount = 1;
 
             var tableData = new string[] {
-                "0",
+                "1",
                 "Waihou vs Cobras",
-                DateTime.Now.ToString(),
-                "Home",
                 "26 - 5",
+                "Home",
+                DateTime.Now.ToString(),
+                string.Empty, // Dashboard
                 string.Empty // Delete
             };
 
@@ -50,7 +51,7 @@ namespace SportsTech.Web.Areas.Events.Controllers
             return View("Create", viewModel);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CreateViewModel viewModel)
         {
             // Handle this better?
@@ -64,7 +65,27 @@ namespace SportsTech.Web.Areas.Events.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View("Edit");
+            var viewModel = new CreateViewModel
+            {
+                Against = "Waihou",
+                EventDate = DateTime.Now,
+                IsHomeGame = true,
+                Referee = "Steve Walsh"
+            };
+
+            return View("Edit", viewModel);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Edit(CreateViewModel viewModel)
+        {
+            return RedirectToAction("List");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]        
+        public ActionResult Delete(int id)
+        {
+            return RedirectToAction("List");
         }
 	}
 }

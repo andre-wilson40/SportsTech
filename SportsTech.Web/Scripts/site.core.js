@@ -92,7 +92,7 @@ site.core = {
     },
 
     redirect: function (url) {
-        window.location.replace(url);
+        window.location = url;
     }
 };
 

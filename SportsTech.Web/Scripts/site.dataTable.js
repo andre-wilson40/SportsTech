@@ -7,7 +7,7 @@
     $.each(Page.dataTableColumns, function () { aoColumns.push(this); });
 
     if (Page.dataTableShowDelete)
-        aoColumns.push({ sName: "", sWidth: 8, fnRender: renderDeleteIcon, bSortable: false });  // delete column
+        aoColumns.push({ sName: "", sClass: "action delete-row", sWidth: 8, fnRender: renderDeleteIcon, bSortable: false });  // delete column
 
     Page.dataTable = $("#dtable").dataTable({
         bServerSide: true,
@@ -42,24 +42,33 @@
     $('.dataTables_filter input').attr("placeholder", "Search filter");
 
     function renderDeleteIcon(row) {
-        var id = row.aData[0];
-        return '<a href="#" class="delete" data-item-id="' + id + '"><i title="Delete" class="cus-bin-closed"></i></a>';
+        var id = row.aData[0];        
+        return '<a href="#" class="delete" data-item-id="' + id + '"><i title="Delete" class="glyphicon glyphicon-trash"></i></a>';
     }
 
-    // row click
-    $("#dtable tbody").delegate("tr", "click", function () {
-        var position = Page.dataTable.fnGetPosition(this); // get the clicked row position
+    // row click tr td:not(:first-child)
+    $("#dtable tbody").on("click", 'tr td:not(.action)', function () {
+        var $parent = $(this).parents('tr');
+        var position = Page.dataTable.fnGetPosition($parent.get(0)); // get the clicked row position
+        
         if (position == null) return;
         var id = Page.dataTable.fnGetData(position)[0];  // Id should be hidden in the 1st column
         site.core.redirect(Page.dataTableEditUrl + "/" + id);
     });
 
-    // delete click
-    $("#dtable tbody").delegate("a.delete", "click", function () {
+    $("#dtable tbody").on("click", ".delete-row", function () {
+        var itemId = $(this).children('a').attr("data-item-id");
+        return onDelete(itemId);
+    });
+
+    $("#dtable tbody").on("click", "a.delete", function () {
         var itemId = $(this).attr("data-item-id");
+        return onDelete(itemId);
+    });
+
+    function onDelete(itemId) {
         $("#hdnDeleteItemId").val(itemId);
         $("#dlgDelete").modal("show");
         return false;
-    });
-
+    }
 });

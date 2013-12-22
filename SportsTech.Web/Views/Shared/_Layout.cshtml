@@ -10,13 +10,15 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body>    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             @Html.Partial("_SiteHeader")
         </div>
     </div>
     <div class="container body-content">
+        @RenderSection("dialogs", false)
+        
         @RenderBody()
         <hr />
         <footer>
@@ -30,5 +32,6 @@
     @Scripts.Render("~/bundles/bootstrap")    
     @Scripts.Render("~/bundles/core")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>
