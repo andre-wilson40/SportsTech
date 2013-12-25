@@ -51,8 +51,6 @@ input[type="checkbox"].input-validation-error {
 
 .top-buffer { margin-top:10px; }
 
-/* ***************************************************************** */
-
 /* ---------------------------------------------------------------------- */
 /*	Model overrides (adjustments)
 /* ---------------------------------------------------------------------- */
@@ -132,4 +130,67 @@ input[type="checkbox"].input-validation-error {
 .modal-content {
 	padding: 0;
 	background:#fff;
+}
+/* ---------------------------------------------------------------------- */
+/*	Error styling
+/* ---------------------------------------------------------------------- */
+
+.message-info {
+    border: 1px solid;
+    clear: both;
+    padding: 10px 20px;
+}
+
+.message-error {
+    clear: both;
+    color: #e80c4d;
+    font-size: 1.1em;
+    margin: 20px 0 10px 0;
+}
+
+.message-success {
+    color: #7ac0da;
+    font-size: 1.3em;
+    margin: 20px 0 10px 0;
+}
+
+.error {
+    color: #e80c4d;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #FF0000;
+    display: none;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors, .validation-summary-errors li {
+    color: #FF0000;    
+}
+
+.validation-summary-errors ul {
+    margin: 0;
+    padding: 0;
+}
+
+.validation-summary-errors li {
+    display: inline;
+    list-style: none;
+    margin: 0;
+}
+
+.validation-summary-valid {
+    display: none;
 }

@@ -26,13 +26,11 @@ namespace SportsTech.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
-                "~/Scripts/jquery.dataTables.js"));//,
-            //    "~/Scripts/jquery.ext.dataTables.js"));
-
+                "~/Scripts/jquery.dataTables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/core").Include(
-                        "~/Scripts/site.core.js"));
-
+                "~/Scripts/site.*"));
+            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
@@ -40,6 +38,14 @@ namespace SportsTech.Web
 
             bundles.Add(new StyleBundle("~/Content/themes/base").Include(
                       "~/Content/themes/base/minified/jquery-ui.min.css"));
+
+            // http://qtip2.com
+            bundles.Add(new ScriptBundle("~/bundles/qtip").Include(
+                        "~/Scripts/qTip/jquery.qtip.js"));
+
+            bundles.Add(new StyleBundle("~/Content/qTip").Include(
+                "~/Scripts/qTip/jquery.qtip.css")
+                );
         }
     }
 }

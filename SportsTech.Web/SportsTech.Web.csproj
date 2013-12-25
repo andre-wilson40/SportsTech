@@ -333,12 +333,13 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.7.1.js" />
+    <Content Include="Scripts\qTip\jquery.qtip.css" />
+    <Content Include="Scripts\qTip\jquery.qtip.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\site.core.js" />
-    <Content Include="Scripts\site.dataTable.js" />
+    <Content Include="Scripts\page.dataTable.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -371,6 +372,7 @@
     <Content Include="Areas\Events\Views\Event\Create.cshtml" />
     <Content Include="Areas\Events\Views\Event\_EventForm.cshtml" />
     <Content Include="Views\Dialog\_DeleteDialog.cshtml" />
+    <Content Include="Scripts\site.validate.unobtrusive.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
