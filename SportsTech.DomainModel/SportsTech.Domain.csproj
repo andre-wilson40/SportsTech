@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8B873C9-705A-4829-910F-6E20ED8A07CC}</ProjectGuid>
+    <ProjectGuid>{1FCAC866-0064-40BC-BF89-5BB21FDA0A95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SportsTech.DataModel</RootNamespace>
-    <AssemblyName>SportsTech.DataModel</AssemblyName>
+    <RootNamespace>SportsTech.Domain</RootNamespace>
+    <AssemblyName>SportsTech.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportsTech.DataModel\SportsTech.Data.csproj">
+      <Project>{c8b873c9-705a-4829-910f-6e20ed8a07cc}</Project>
+      <Name>SportsTech.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

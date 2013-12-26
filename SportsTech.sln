@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Web", "SportsTec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Web.Tests", "SportsTech.Web.Tests\SportsTech.Web.Tests.csproj", "{BD9D4267-2049-47B2-BCDE-4192BB765909}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.DataModel", "SportsTech.DataModel\SportsTech.DataModel.csproj", "{C8B873C9-705A-4829-910F-6E20ED8A07CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Data", "SportsTech.DataModel\SportsTech.Data.csproj", "{C8B873C9-705A-4829-910F-6E20ED8A07CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.DomainModel", "SportsTech.DomainModel\SportsTech.DomainModel.csproj", "{1FCAC866-0064-40BC-BF89-5BB21FDA0A95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Domain", "SportsTech.DomainModel\SportsTech.Domain.csproj", "{1FCAC866-0064-40BC-BF89-5BB21FDA0A95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

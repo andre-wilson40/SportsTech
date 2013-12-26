@@ -55,7 +55,7 @@ namespace SportsTech.Web.Areas.Events.Controllers
                     new ActivityEventViewModel { Id = 2, Name = "Ruck" }
                 }
             };
-
+            
             return PartialView("_Available", viewModel);
         }
 
