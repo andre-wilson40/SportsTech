@@ -49,11 +49,27 @@
   <ItemGroup>
     <Compile Include="IDataContext.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="Migrations\201312280737350_Initial.cs" />
+    <Compile Include="Migrations\201312280737350_Initial.Designer.cs">
+      <DependentUpon>201312280737350_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Club.cs" />
+    <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\Membership.cs" />
+    <Compile Include="Model\Season.cs" />
+    <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312280737350_Initial.resx">
+      <DependentUpon>201312280737350_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,11 +6,19 @@ using System.Web.Mvc;
 using SportsTech.Web.Filters;
 using System.Threading.Tasks;
 using SportsTech.Web.Areas.Events.ViewModels.Event;
+using SportsTech.Data;
 
 namespace SportsTech.Web.Areas.Events.Controllers
 {
     public class EventController : Controller
     {
+        private readonly IDataContext _dataContext;
+
+        public EventController(IDataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
+
         [HttpPost]
         public ActionResult DataTable(Datatables.Mvc.DataTable dataTableParams) 
         {

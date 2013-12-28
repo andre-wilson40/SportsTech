@@ -18,7 +18,9 @@ namespace SportsTech.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            DatabaseConfig.Initialize();
             FluentValidationModelValidatorProvider.Configure();
+            AutofaqConfig.Configure();
         }
     }
 }

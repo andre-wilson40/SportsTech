@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SportsTech.Data.Model
+{
+    public class Event : IEntity
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        
+        [ForeignKey("SeasonId")]
+        public Season Season { get; set; }
+        public int SeasonId { get; set; }
+    }
+}
