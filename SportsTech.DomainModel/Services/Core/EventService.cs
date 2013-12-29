@@ -11,13 +11,14 @@ namespace SportsTech.Domain.Services.Core
 {
     public class EventService : ServiceBase<Data.Model.Event>
     {
-        public EventService(IDataContext dataContext) : base(dataContext.Events)
+        public EventService(IUnitOfWork unitOfWork)
+            : base(unitOfWork)
         {
                         
         }
 
         public async Task<List<Data.Model.Event>> GetBySeasonAsync(string season)
-        {
+        {            
             return null;
         }
 

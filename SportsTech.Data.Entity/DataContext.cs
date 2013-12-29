@@ -1,30 +1,15 @@
-﻿using System;
+﻿using SportsTech.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SportsTech.Data.Model;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace SportsTech.Data
+namespace SportsTech.Data.Entity
 {
-    public interface IDataContext
-    {
-        IDbSet<Event> Events { get; set; }
-        IDbSet<Club> Clubs { get; set; }
-        IDbSet<Member> Members { get; set; }
-        IDbSet<Membership> Memberships { get; set; }
-        IDbSet<Season> Seasons { get; set; }
-        IDbSet<Team> Teams { get; set; }
-        
-        System.Data.Entity.Database Database { get; }
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;        
-        int SaveChanges();
-    }
-
-    public class DataContext: DbContext, IDataContext
+    public class DataContext : DbContext, IDataContext
     {
         public IDbSet<Event> Events { get; set; }
         public IDbSet<Club> Clubs { get; set; }
@@ -33,7 +18,8 @@ namespace SportsTech.Data
         public IDbSet<Season> Seasons { get; set; }
         public IDbSet<Team> Teams { get; set; }
 
-        public DataContext() : base("DataContext")
+        public DataContext()
+            : base("DataContext")
         {
 
         }

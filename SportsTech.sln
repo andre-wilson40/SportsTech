@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Domain", "Sports
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Domain.Tests", "SportsTech.Domain.Tests\SportsTech.Domain.Tests.csproj", "{7D6E6B14-F58B-4E18-BA7A-4ECE30D54CFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTech.Data.Entity", "SportsTech.Data.Entity\SportsTech.Data.Entity.csproj", "{3BD5DAA7-A98E-4052-BCF1-1725B1680E6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7D6E6B14-F58B-4E18-BA7A-4ECE30D54CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D6E6B14-F58B-4E18-BA7A-4ECE30D54CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D6E6B14-F58B-4E18-BA7A-4ECE30D54CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD5DAA7-A98E-4052-BCF1-1725B1680E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD5DAA7-A98E-4052-BCF1-1725B1680E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD5DAA7-A98E-4052-BCF1-1725B1680E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD5DAA7-A98E-4052-BCF1-1725B1680E6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

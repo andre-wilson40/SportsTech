@@ -12,11 +12,11 @@ namespace SportsTech.Web.Areas.Events.Controllers
 {
     public class EventController : Controller
     {
-        private readonly IDataContext _dataContext;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EventController(IDataContext dataContext)
+        public EventController(IUnitOfWork unitOfWork)
         {
-            _dataContext = dataContext;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]

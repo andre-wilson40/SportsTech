@@ -10,31 +10,33 @@ namespace SportsTech.Domain.Services
 {
     public abstract class ServiceBase<TEntity> : IService, IService<TEntity> where TEntity: IEntity 
     {
-        protected IDbSet<TEntity> EntitySet { get;  private set; }
+        protected IUnitOfWork UnitOfWork { get;  private set; }
+        protected IRepository<TEntity> Repository { get; private set; }
 
-        protected ServiceBase(IDbSet<TEntity> entitySet)
+        protected ServiceBase(IUnitOfWork unitOfWork)
         {
-            EntitySet = entitySet;
+            UnitOfWork = unitOfWork;
+            Repository = unitOfWork.GetRepository<TEntity>();
         }
 
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
-            return await EntitySet.ToListAsync();
+            return await Repository.AsQueryable().ToListAsync();
         }
 
         public virtual TEntity Add(TEntity ev)
         {
-            return EntitySet.Add(ev);
+            return Repository.Add(ev);
         }
 
         public virtual void Remove(TEntity ev)
         {
-            EntitySet.Remove(ev);
+            Repository.Remove(ev);
         }
 
         public virtual Task<TEntity> SingleAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
-            return EntitySet.SingleAsync(expression);
+            return Repository.SingleAsync(expression);
         }
     }
 }

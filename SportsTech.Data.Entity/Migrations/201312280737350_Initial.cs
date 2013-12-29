@@ -1,4 +1,4 @@
-namespace SportsTech.Data.Migrations
+namespace SportsTech.Data.Entity.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -1,5 +1,6 @@
 ﻿using SportsTech.Data;
-using SportsTech.Data.Migrations;
+using SportsTech.Data.Entity;
+using SportsTech.Data.Entity.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

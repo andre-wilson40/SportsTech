@@ -15,7 +15,10 @@ namespace SportsTech.Domain.Tests.Services.Core
         {
             // Arrange
             var dataContext = MockFactory.GetEmptyContext();
-            var eventService = new EventService(dataContext);
+            dataContext.Events = MockFactory.CreateDbSet<Data.Model.Event>(new List<Data.Model.Event>()).Object;
+            var uow = MockFactory.GetUnitOfWork(dataContext);
+
+            var eventService = new EventService(uow);
 
             // Act
             var records = await eventService.GetAllAsync();
@@ -31,11 +34,12 @@ namespace SportsTech.Domain.Tests.Services.Core
             var data = new List<Data.Model.Event>() {
                 new Data.Model.Event()
             };
-
+            
             var dataContext = MockFactory.GetEmptyContext();
             dataContext.Events = MockFactory.CreateDbSet<Data.Model.Event>(data).Object;
-
-            var eventService = new EventService(dataContext);
+            
+            var uow = MockFactory.GetUnitOfWork(dataContext);            
+            var eventService = new EventService(uow);
 
             // Act
             var records = await eventService.GetAllAsync();
@@ -54,8 +58,9 @@ namespace SportsTech.Domain.Tests.Services.Core
 
             var dataContext = MockFactory.GetEmptyContext();
             dataContext.Events = MockFactory.CreateDbSet<Data.Model.Event>(data).Object;
-
-            var eventService = new EventService(dataContext);
+            
+            var uow = MockFactory.GetUnitOfWork(dataContext);            
+            var eventService = new EventService(uow);
 
             // Act
             var record = await eventService.SingleAsync(2);

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using SportsTech.Data;
+using SportsTech.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace SportsTech.Web
 
         private static void RegisterDependencies(ContainerBuilder builder) {
 
-            builder.RegisterType<DataContext>().As<IDataContext>().InstancePerHttpRequest();
+            builder.RegisterType<SportsTech.Data.Entity.DataContext>().As<IDataContext>().InstancePerHttpRequest();
         }
     }
 }

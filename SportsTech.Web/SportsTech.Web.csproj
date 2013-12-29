@@ -389,6 +389,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SportsTech.Data.Entity\SportsTech.Data.Entity.csproj">
+      <Project>{3bd5daa7-a98e-4052-bcf1-1725b1680e6a}</Project>
+      <Name>SportsTech.Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SportsTech.DataModel\SportsTech.Data.csproj">
       <Project>{c8b873c9-705a-4829-910f-6e20ed8a07cc}</Project>
       <Name>SportsTech.Data</Name>

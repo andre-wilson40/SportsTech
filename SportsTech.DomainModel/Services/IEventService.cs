@@ -10,6 +10,5 @@ namespace SportsTech.Domain.Services
     public interface IEventService : IService, IService<Event>
     {
         Task<List<Event>> GetBySeasonAsync(string season);
-        Task<List<Event>> GetAllAsync();
     }
 }

@@ -3,9 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Data.Entity;
 using SportsTech.Data;
+using SportsTech.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Data.Entity.Design.PluralizationServices;
+using System.Globalization;
 
 namespace SportsTech.Domain.Tests
 {
@@ -16,6 +20,11 @@ namespace SportsTech.Domain.Tests
             var dataContext = new DataContext();
             
             return dataContext;
+        }
+
+        public static IUnitOfWork GetUnitOfWork(IDataContext dataContext)
+        {
+            return new UnitOfWork(dataContext);
         }
 
         public static Mock<IDbSet<TEntity>> CreateDbSet<TEntity>(IList<TEntity> dbSet) where TEntity: IEntity 
