@@ -23,9 +23,10 @@ namespace SportsTech.Web
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-        private static void RegisterDependencies(ContainerBuilder builder) {
-
+        private static void RegisterDependencies(ContainerBuilder builder) 
+        {
             builder.RegisterType<SportsTech.Data.Entity.DataContext>().As<IDataContext>().InstancePerHttpRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
         }
     }
 }

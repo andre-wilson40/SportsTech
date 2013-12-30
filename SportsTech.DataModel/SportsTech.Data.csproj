@@ -51,6 +51,7 @@
     <Compile Include="Model\EventTag.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Membership.cs" />
+    <Compile Include="Model\Opposition.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Position.cs" />
     <Compile Include="Model\Season.cs" />
