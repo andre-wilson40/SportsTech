@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
+using SportsTech.Data.Model;
 
 namespace SportsTech.Domain.Tests
 {
@@ -49,7 +50,23 @@ namespace SportsTech.Domain.Tests
 
         internal class DataContext : IDataContext
         {
-            public IDbSet<Data.Model.Event> Events { get; set; }
+            public virtual IDbSet<UserProfile> UserProfiles { get; set; }
+            public virtual IDbSet<Club> Clubs { get; set; }
+            public virtual IDbSet<Member> Members { get; set; }
+            public virtual IDbSet<Event> Events { get; set; }
+            public virtual IDbSet<Membership> Memberships { get; set; }
+            public virtual IDbSet<Season> Seasons { get; set; }
+            public virtual IDbSet<Team> Teams { get; set; }
+            public virtual IDbSet<CompetitionRegistration> CompetitionRegistrations { get; set; }
+            public virtual IDbSet<Squad> Squads { get; set; }
+            public virtual IDbSet<Player> Players { get; set; }
+            public virtual IDbSet<EventParticipant> EventParticipants { get; set; }
+            public virtual IDbSet<Teamsheet> Teamsheets { get; set; }
+            public virtual IDbSet<SeasonRound> SeasonRounds { get; set; }
+            public virtual IDbSet<EventTag> EventTags { get; set; }
+            public virtual IDbSet<TagType> TagTypes { get; set; }
+            public virtual IDbSet<Tag> Tags { get; set; }
+            public virtual IDbSet<Stoppage> Stoppages { get; set; }
 
             public Database Database
             {
@@ -69,67 +86,6 @@ namespace SportsTech.Domain.Tests
             public DataContext()
             {
                 Events = CreateDbSet(new List<Data.Model.Event>()).Object;
-            }
-
-
-            public IDbSet<Data.Model.Club> Clubs
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-                set
-                {
-                    throw new NotImplementedException();
-                }
-            }
-
-            public IDbSet<Data.Model.Member> Members
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-                set
-                {
-                    throw new NotImplementedException();
-                }
-            }
-
-            public IDbSet<Data.Model.Membership> Memberships
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-                set
-                {
-                    throw new NotImplementedException();
-                }
-            }
-
-            public IDbSet<Data.Model.Season> Seasons
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-                set
-                {
-                    throw new NotImplementedException();
-                }
-            }
-
-            public IDbSet<Data.Model.Team> Teams
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-                set
-                {
-                    throw new NotImplementedException();
-                }
             }
         }
     }

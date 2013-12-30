@@ -8,26 +8,31 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Data.Model
 {
-    public class Season
+    public class Tag
     {
-        public Season()
+        public Tag()
         {
-            Teams = new HashSet<Team>();
+            EventTags = new HashSet<EventTag>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required, MaxLength(20)]
         public string Name { get; set; }
 
         [ForeignKey("ClubId")]
         public virtual Club Club { get; set; }
-        public int ClubId { get; set; }
+        public int? ClubId { get; set; }
 
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        [ForeignKey("TagTypeId")]
+        public virtual TagType TagType { get; set; }
+        public int TagTypeId { get; set; }
 
-        public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<EventTag> EventTags { get; set; }
+
+        [ForeignKey("ParentId")]
+        public virtual Tag Parent { get; set; }
+        public int? ParentId { get; set; }
     }
 }

@@ -45,11 +45,23 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Model\Club.cs" />
+    <Compile Include="Model\CompetitionRegistration.cs" />
     <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\EventParticipants.cs" />
+    <Compile Include="Model\EventTag.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Membership.cs" />
+    <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\Position.cs" />
     <Compile Include="Model\Season.cs" />
+    <Compile Include="Model\SeasonRound.cs" />
+    <Compile Include="Model\Squad.cs" />
+    <Compile Include="Model\Stoppage.cs" />
+    <Compile Include="Model\Tag.cs" />
+    <Compile Include="Model\TagType.cs" />
     <Compile Include="Model\Team.cs" />
+    <Compile Include="Model\Teamsheet.cs" />
+    <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,12 +11,23 @@ namespace SportsTech.Data.Entity
 {
     public class DataContext : DbContext, IDataContext
     {
-        public IDbSet<Event> Events { get; set; }
-        public IDbSet<Club> Clubs { get; set; }
-        public IDbSet<Member> Members { get; set; }
-        public IDbSet<Membership> Memberships { get; set; }
-        public IDbSet<Season> Seasons { get; set; }
-        public IDbSet<Team> Teams { get; set; }
+        public virtual IDbSet<UserProfile> UserProfiles { get; set; }
+        public virtual IDbSet<Club> Clubs { get; set; }
+        public virtual IDbSet<Member> Members { get; set; }
+        public virtual IDbSet<Event> Events { get; set; }
+        public virtual IDbSet<Membership> Memberships { get; set; }
+        public virtual IDbSet<Season> Seasons { get; set; }
+        public virtual IDbSet<Team> Teams { get; set; }
+        public virtual IDbSet<CompetitionRegistration> CompetitionRegistrations { get; set; }
+        public virtual IDbSet<Squad> Squads { get; set; }
+        public virtual IDbSet<Player> Players { get; set; }
+        public virtual IDbSet<EventParticipant> EventParticipants { get; set; }
+        public virtual IDbSet<Teamsheet> Teamsheets { get; set; }
+        public virtual IDbSet<SeasonRound> SeasonRounds { get; set; }
+        public virtual IDbSet<EventTag> EventTags { get; set; }
+        public virtual IDbSet<TagType> TagTypes { get; set; }
+        public virtual IDbSet<Tag> Tags { get; set; }
+        public virtual IDbSet<Stoppage> Stoppages { get; set; }
 
         public DataContext()
             : base("DataContext")
@@ -29,15 +40,25 @@ namespace SportsTech.Data.Entity
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasMany(v => v.UserProfiles)
-            //    .WithMany(v => v.Customers)
-            //    .Map(m =>
-            //    {
-            //        m.MapLeftKey("CustomerId");
-            //        m.MapRightKey("UserProfileId");
-            //        m.ToTable("CustomerManager");
-            //    });
+            modelBuilder.Entity<Club>()
+                .HasMany(v => v.UserProfiles)
+                .WithMany(v => v.Clubs)
+                .Map(m =>
+                {
+                    m.MapLeftKey("ClubId");
+                    m.MapRightKey("UserProfileId");
+                    m.ToTable("UserClubAffliations");
+                });
+
+            modelBuilder.Entity<Player>()
+                .HasMany(v => v.Squads)
+                .WithMany(v => v.Players)
+                .Map(m =>
+                {
+                    m.MapLeftKey("PlayerId");
+                    m.MapRightKey("SquadId");
+                    m.ToTable("SquadMembers");
+                });
         }
     }
 }

@@ -10,11 +10,23 @@ namespace SportsTech.Data.Model
 {
     public class Team
     {
+        public Team()
+        {
+            Seasons = new HashSet<Season>();
+            CompetitionRegistrations = new HashSet<CompetitionRegistration>();
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [ForeignKey("ClubId")]        
-        public Club Club { get; set; }
+        public virtual Club Club { get; set; }
         public int ClubId { get; set; }
+
+        [Required, MaxLength(50)]
+        public string Name { get; set; }
+
+        public virtual ICollection<Season> Seasons { get; set; }
+        public virtual ICollection<CompetitionRegistration> CompetitionRegistrations { get; set; }
     }
 }

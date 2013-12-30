@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Data.Model
 {
-    public class Member
+    public class Player
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -21,21 +21,16 @@ namespace SportsTech.Data.Model
 
         public DateTime DateOfBirth { get; set; }
 
+        public virtual ICollection<Squad> Squads { get; set; }
+
         [NotMapped]
         public string FullName
         {
             get
             {
-                return FirstName + " "  + LastName;
+                return FirstName + " " + LastName;
             }
         }
 
-        [ForeignKey("ClubId")]
-        public virtual Club Club { get; set;}
-        public int ClubId { get; set;}
-
-        [ForeignKey("MembershipId")]
-        public virtual Membership Membership { get; set; }
-        public int MembershipId { get; set; }
     }
 }
