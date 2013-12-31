@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using SportsTech.Web.Models;
 using SportsTech.Web.Filters;
+using AutoMapper;
 
 namespace SportsTech.Web.Controllers
 {
@@ -79,18 +80,7 @@ namespace SportsTech.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() 
-                { 
-                    UserName = model.UserName,                   
-                    UserProfile = new Data.Model.UserProfile
-                    {
-                        FirstName = "Andre",
-                        LastName = "Wilson",
-                        EmailAddress = "andre.wilson@rezare.co.nz",
-                        TimeZone = "en-NZ",
-                        DateFormat = "dd-mmmy-yyyy"
-                    }
-                };
+                var user = Mapper.Map<ApplicationUser>(model);
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
