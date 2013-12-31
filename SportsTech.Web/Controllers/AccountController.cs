@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using SportsTech.Web.Models;
+using SportsTech.Web.Filters;
 
 namespace SportsTech.Web.Controllers
 {
@@ -78,7 +79,19 @@ namespace SportsTech.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() 
+                { 
+                    UserName = model.UserName,                   
+                    UserProfile = new Data.Model.UserProfile
+                    {
+                        FirstName = "Andre",
+                        LastName = "Wilson",
+                        EmailAddress = "andre.wilson@rezare.co.nz",
+                        TimeZone = "en-NZ",
+                        DateFormat = "dd-mmmy-yyyy"
+                    }
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

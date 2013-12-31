@@ -109,6 +109,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.2\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.0.0\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="MoreLinq">
       <HintPath>..\packages\morelinq.1.0.16006\lib\net35\MoreLinq.dll</HintPath>
     </Reference>
@@ -211,6 +214,7 @@
     <Compile Include="Areas\Events\ViewModels\Dashboard\DashboardViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Dashboard\TeamViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseAuthenticatedController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Areas\Events\Controllers\EventController.cs" />
     <Compile Include="Controllers\DialogController.cs" />
@@ -221,6 +225,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312310003375_UserProfile.cs" />
+    <Compile Include="Migrations\201312310003375_UserProfile.Designer.cs">
+      <DependentUpon>201312310003375_UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\NetwonSoftJsonActionResult.cs" />
@@ -344,7 +353,9 @@
     <Content Include="Scripts\site.core.js" />
     <Content Include="Scripts\page.dataTable.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -401,6 +412,11 @@
       <Project>{1fcac866-0064-40bc-bf89-5bb21fda0a95}</Project>
       <Name>SportsTech.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201312310003375_UserProfile.resx">
+      <DependentUpon>201312310003375_UserProfile.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

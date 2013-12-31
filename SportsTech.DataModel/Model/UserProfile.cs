@@ -14,7 +14,7 @@ namespace SportsTech.Data.Model
         public int Id { get; set; }
 
         [Required, MaxLength(200)]
-        public string UserName { get; set; }
+        public string EmailAddress { get; set; }
 
         [Required, MaxLength(50)]
         public string FirstName { get; set; }
@@ -40,12 +40,6 @@ namespace SportsTech.Data.Model
         public string FullName
         {
             get { return FirstName + " " + LastName; }
-        }
-
-        [NotMapped]
-        public string EmailAddress
-        {
-            get { return UserName; }
         }
     }
 }

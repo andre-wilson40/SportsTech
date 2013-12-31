@@ -7,10 +7,11 @@ using SportsTech.Web.Filters;
 using System.Threading.Tasks;
 using SportsTech.Web.Areas.Events.ViewModels.Event;
 using SportsTech.Data;
+using SportsTech.Web.Controllers;
 
 namespace SportsTech.Web.Areas.Events.Controllers
 {
-    public class EventController : Controller
+    public class EventController : BaseAuthenticatedController
     {
         private readonly IUnitOfWork _unitOfWork;
 

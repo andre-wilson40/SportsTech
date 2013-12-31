@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SportsTech.Web.Areas.Events.ViewModels.Activity;
+using SportsTech.Web.Controllers;
 
 namespace SportsTech.Web.Areas.Events.Controllers
 {
-    public class ActivityController : Controller
+    public class ActivityController : BaseAuthenticatedController 
     {
         [HttpGet]
         [ChildActionOnly]

@@ -104,10 +104,17 @@ namespace SportsTech.Data.Entity.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         EventId = c.Int(nullable: false),
+                        TeamId = c.Int(),
+                        OppositionId = c.Int(),
+                        IsHomeGame = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Event", t => t.EventId, cascadeDelete: true)
-                .Index(t => t.EventId);
+                .ForeignKey("dbo.Opposition", t => t.OppositionId)
+                .ForeignKey("dbo.Team", t => t.TeamId)
+                .Index(t => t.EventId)
+                .Index(t => t.OppositionId)
+                .Index(t => t.TeamId);
             
             CreateTable(
                 "dbo.Event",
@@ -186,6 +193,15 @@ namespace SportsTech.Data.Entity.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Type = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Opposition",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -287,6 +303,8 @@ namespace SportsTech.Data.Entity.Migrations
             DropForeignKey("dbo.SquadMembers", "PlayerId", "dbo.Player");
             DropForeignKey("dbo.Squad", "CompetitionRegistrationId", "dbo.CompetitionRegistration");
             DropForeignKey("dbo.Teamsheet", "EventParticipantId", "dbo.EventParticipant");
+            DropForeignKey("dbo.EventParticipant", "TeamId", "dbo.Team");
+            DropForeignKey("dbo.EventParticipant", "OppositionId", "dbo.Opposition");
             DropForeignKey("dbo.Tag", "TagTypeId", "dbo.TagType");
             DropForeignKey("dbo.Tag", "ParentId", "dbo.Tag");
             DropForeignKey("dbo.EventTag", "TagId", "dbo.Tag");
@@ -312,6 +330,8 @@ namespace SportsTech.Data.Entity.Migrations
             DropIndex("dbo.SquadMembers", new[] { "PlayerId" });
             DropIndex("dbo.Squad", new[] { "CompetitionRegistrationId" });
             DropIndex("dbo.Teamsheet", new[] { "EventParticipantId" });
+            DropIndex("dbo.EventParticipant", new[] { "TeamId" });
+            DropIndex("dbo.EventParticipant", new[] { "OppositionId" });
             DropIndex("dbo.Tag", new[] { "TagTypeId" });
             DropIndex("dbo.Tag", new[] { "ParentId" });
             DropIndex("dbo.EventTag", new[] { "TagId" });
@@ -338,6 +358,7 @@ namespace SportsTech.Data.Entity.Migrations
             DropTable("dbo.Squad");
             DropTable("dbo.Player");
             DropTable("dbo.Teamsheet");
+            DropTable("dbo.Opposition");
             DropTable("dbo.TagType");
             DropTable("dbo.Tag");
             DropTable("dbo.EventTag");

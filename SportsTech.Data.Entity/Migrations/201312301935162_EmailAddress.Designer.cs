@@ -7,13 +7,13 @@ namespace SportsTech.Data.Entity.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.2-21211")]
-    public sealed partial class Opposition : IMigrationMetadata
+    public sealed partial class EmailAddress : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Opposition));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(EmailAddress));
         
         string IMigrationMetadata.Id
         {
-            get { return "201312300214519_Opposition"; }
+            get { return "201312301935162_EmailAddress"; }
         }
         
         string IMigrationMetadata.Source

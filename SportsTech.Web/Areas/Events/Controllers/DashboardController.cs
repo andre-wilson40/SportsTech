@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SportsTech.Web.Areas.Events.ViewModels.Dashboard;
+using SportsTech.Web.Controllers;
 
 namespace SportsTech.Web.Areas.Events.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseAuthenticatedController
     {
         [HttpGet]
         public ActionResult View(int id)

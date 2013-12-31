@@ -51,13 +51,13 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="DataRepository.cs" />
     <Compile Include="IDataContext.cs" />
-    <Compile Include="Migrations\201312300155504_Initial.cs" />
-    <Compile Include="Migrations\201312300155504_Initial.Designer.cs">
-      <DependentUpon>201312300155504_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201312300329025_Initial.cs" />
+    <Compile Include="Migrations\201312300329025_Initial.Designer.cs">
+      <DependentUpon>201312300329025_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312300214519_Opposition.cs" />
-    <Compile Include="Migrations\201312300214519_Opposition.Designer.cs">
-      <DependentUpon>201312300214519_Opposition.cs</DependentUpon>
+    <Compile Include="Migrations\201312301935162_EmailAddress.cs" />
+    <Compile Include="Migrations\201312301935162_EmailAddress.Designer.cs">
+      <DependentUpon>201312301935162_EmailAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,11 +74,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312300155504_Initial.resx">
-      <DependentUpon>201312300155504_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312300329025_Initial.resx">
+      <DependentUpon>201312300329025_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312300214519_Opposition.resx">
-      <DependentUpon>201312300214519_Opposition.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201312301935162_EmailAddress.resx">
+      <DependentUpon>201312301935162_EmailAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
