@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\Core\ClubService.cs" />
     <Compile Include="Services\Core\EventService.cs" />
+    <Compile Include="Services\IClubService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\IEventService.cs" />
     <Compile Include="Services\IService.cs" />

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SportsTech.Data.Entity;
 using SportsTech.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,9 @@ namespace SportsTech.Web
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(v => v.LastName))
                 .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(v => v.EmailAddress))
                 .ForMember(dest => dest.TimeZone, opt => opt.UseValue("en-NZ"))
-                .ForMember(dest => dest.DateFormat, opt => opt.UseValue("dd-MM-yyyy"));            
+                .ForMember(dest => dest.DateFormat, opt => opt.UseValue("dd-MM-yyyy"));
+
+            Mapper.CreateMap<Areas.Clubs.ViewModels.Club.CreateViewModel, Data.Model.Club>();
         }
     }
 }

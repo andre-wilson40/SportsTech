@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SportsTech.Web.Areas.Events.ViewModels.Activity;
 using SportsTech.Web.Controllers;
+using SportsTech.Data;
 
 namespace SportsTech.Web.Areas.Events.Controllers
 {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Domain.Services.Core
 {
-    public class EventService : ServiceBase<Data.Model.Event>
+    public class EventService : ServiceBase<Data.Model.Event>, IEventService
     {
         public EventService(IUnitOfWork unitOfWork)
             : base(unitOfWork)

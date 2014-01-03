@@ -37,6 +37,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,16 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationUser.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataRepository.cs" />
     <Compile Include="IDataContext.cs" />
-    <Compile Include="Migrations\201312300329025_Initial.cs" />
-    <Compile Include="Migrations\201312300329025_Initial.Designer.cs">
-      <DependentUpon>201312300329025_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201312301935162_EmailAddress.cs" />
-    <Compile Include="Migrations\201312301935162_EmailAddress.Designer.cs">
-      <DependentUpon>201312301935162_EmailAddress.cs</DependentUpon>
+    <Compile Include="Migrations\201401030048314_Initial.cs" />
+    <Compile Include="Migrations\201401030048314_Initial.Designer.cs">
+      <DependentUpon>201401030048314_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,11 +77,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312300329025_Initial.resx">
-      <DependentUpon>201312300329025_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201312301935162_EmailAddress.resx">
-      <DependentUpon>201312301935162_EmailAddress.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201401030048314_Initial.resx">
+      <DependentUpon>201401030048314_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

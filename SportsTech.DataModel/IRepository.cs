@@ -17,5 +17,6 @@ namespace SportsTech.Data
         Task<bool> AnyAsync();
         Task<bool> AnyAsync(Expression<Func<TModel, bool>> expression);
         Task<int> CountAsync();
+        Task<int> CountAsync(Expression<Func<TModel, bool>> expression);
     }
 }

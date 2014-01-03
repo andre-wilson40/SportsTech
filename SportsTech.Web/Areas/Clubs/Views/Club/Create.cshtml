@@ -1,0 +1,34 @@
+﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Club.CreateViewModel
+
+@{
+    ViewBag.Title = "Create new club";
+}
+
+@using (Html.BeginForm("Create", "Club", FormMethod.Post, new { id = "CreateNewClub" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        @Html.Partial("_ClubForm", Model)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="cancel-create-btn" type="submit" value="Create" class="btn btn-primary" />
+                <input id="cancel-event-btn" type="button" value="Cancel" class="btn btn-default btn-cancel" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $('#cancel-event-btn').on('click', function () {
+                site.core.redirect('@Url.Action("Index", "Clubs")');
+            });
+        });
+    </script>
+}

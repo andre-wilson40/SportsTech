@@ -8,45 +8,49 @@ using System.Threading.Tasks;
 using SportsTech.Web.Areas.Events.ViewModels.Event;
 using SportsTech.Data;
 using SportsTech.Web.Controllers;
+using SportsTech.Domain.Services.Core;
+using SportsTech.Domain.Services;
 
 namespace SportsTech.Web.Areas.Events.Controllers
 {
     public class EventController : BaseAuthenticatedController
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private IEventService _eventService;
 
-        public EventController(IUnitOfWork unitOfWork)
+        public EventController(IEventService eventService)
         {
-            _unitOfWork = unitOfWork;
+            _eventService = eventService;
         }
 
         [HttpPost]
-        public ActionResult DataTable(Datatables.Mvc.DataTable dataTableParams) 
+        public async Task<ActionResult> DataTable(Datatables.Mvc.DataTable dataTableParams) 
         {
             int recordCount = 1;
             int filteredRecordCount = 1;
 
-            var tableData = new string[] {
-                "1",
+            var events = await _eventService.GetAllAsync();
+
+            var tableData = events.Select(p => new string[] {
+                p.Id.ToString(),
                 "Waihou vs Cobras",
                 "26 - 5",
-                "Home",
-                DateTime.Now.ToString(),
-                string.Empty, // Dashboard
-                string.Empty // Delete
-            };
+                "home",
+                p.EventDate.ToString(),
+                string.Empty,
+                string.Empty
+            }).ToList();
 
             return Json(new
             {
                 dataTableParams.sEcho,
                 iTotalRecords = recordCount,
                 iTotalDisplayRecords = filteredRecordCount,
-                aaData = new List<string[]> { tableData }
+                aaData =  tableData
             });
         }
 
         [HttpGet]
-        public async Task<ActionResult> List()
+        public ActionResult List()
         {        
             return View("List");
         }

@@ -19,6 +19,11 @@ namespace SportsTech.Domain.Services
             Repository = unitOfWork.GetRepository<TEntity>();
         }
 
+        public virtual void SaveAnyChanges()
+        {
+            UnitOfWork.SaveAnyChanges();
+        }
+
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
             return await Repository.AsQueryable().ToListAsync();
@@ -37,6 +42,11 @@ namespace SportsTech.Domain.Services
         public virtual Task<TEntity> SingleAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
             return Repository.SingleAsync(expression);
+        }
+
+        protected virtual Task<int> CountAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
+        {
+            return Repository.CountAsync(expression);
         }
     }
 }

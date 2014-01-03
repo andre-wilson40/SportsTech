@@ -211,6 +211,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SiteAutoMapperConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Clubs\ClubsAreaRegistration.cs" />
+    <Compile Include="Areas\Clubs\Controllers\ClubController.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
     <Compile Include="Areas\Events\Controllers\ActivityController.cs" />
     <Compile Include="Areas\Events\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
@@ -232,13 +235,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312310003375_UserProfile.cs" />
-    <Compile Include="Migrations\201312310003375_UserProfile.Designer.cs">
-      <DependentUpon>201312310003375_UserProfile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\NetwonSoftJsonActionResult.cs" />
     <Compile Include="Models\ResourceNotFoundException.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.TakeLast.cs" />
@@ -249,6 +246,7 @@
     <Compile Include="Areas\Events\ViewModels\Event\EditViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Activity\ListViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Event\ListViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Shared\SiteHeaderViewModel.cs" />
     <Compile Include="ViewModels\Shared\DeleteDialogViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +335,12 @@
     <Content Include="Areas\Events\Views\Activity\_Available.cshtml" />
     <Content Include="Areas\Events\Views\Activity\_ActivityEvents.cshtml" />
     <Content Include="Areas\Events\Views\Event\Edit.cshtml" />
+    <Content Include="Areas\Clubs\Views\web.config" />
+    <Content Include="Areas\Clubs\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Clubs\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Clubs\Views\Club\Create.cshtml" />
+    <Content Include="Areas\Clubs\Views\Club\_ClubForm.cshtml" />
+    <Content Include="Areas\Clubs\Views\Shared\_SiteHeader.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -397,8 +401,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Clubs\Models\" />
     <Folder Include="Areas\Events\Models\" />
     <Folder Include="Library\" />
+    <Folder Include="Migrations\" />
     <Folder Include="ViewModels\Dashboard\" />
     <Folder Include="ViewModels\Home\" />
   </ItemGroup>
@@ -419,11 +425,6 @@
       <Project>{1fcac866-0064-40bc-bf89-5bb21fda0a95}</Project>
       <Name>SportsTech.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312310003375_UserProfile.resx">
-      <DependentUpon>201312310003375_UserProfile.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

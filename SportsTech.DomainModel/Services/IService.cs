@@ -10,13 +10,15 @@ namespace SportsTech.Domain.Services
 {
     public interface IService
     {
-        
+        void SaveAnyChanges();   
     }
 
     public interface IService<TEntity> where TEntity : IEntity
     {
         Task<List<TEntity>> GetAllAsync();
         Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> expression);
+
+        // TODO:  Should this be another interface?
         TEntity Add(TEntity ev);
         void Remove(TEntity ev);
     }

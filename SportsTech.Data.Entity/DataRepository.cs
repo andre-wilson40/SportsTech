@@ -103,5 +103,11 @@ namespace SportsTech.Data.Entity
         {
             return ObjectSet.CountAsync();
         }
+
+
+        public Task<int> CountAsync(Expression<Func<T, bool>> expression)
+        {
+            return ObjectSet.CountAsync(expression);
+        }
     }
 }

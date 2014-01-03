@@ -1,4 +1,5 @@
-﻿using SportsTech.Data.Model;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using SportsTech.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Data.Entity
 {
-    public class DataContext : DbContext, IDataContext
+    public class DataContext : IdentityDbContext<ApplicationUser>, IDataContext
     {
         public virtual IDbSet<UserProfile> UserProfiles { get; set; }
         public virtual IDbSet<Club> Clubs { get; set; }
@@ -40,6 +41,8 @@ namespace SportsTech.Data.Entity
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Club>()
                 .HasMany(v => v.UserProfiles)
                 .WithMany(v => v.Clubs)
@@ -47,7 +50,7 @@ namespace SportsTech.Data.Entity
                 {
                     m.MapLeftKey("ClubId");
                     m.MapRightKey("UserProfileId");
-                    m.ToTable("UserClubAffliations");
+                    m.ToTable("UserProfileClub");
                 });
 
             modelBuilder.Entity<Player>()
@@ -58,7 +61,7 @@ namespace SportsTech.Data.Entity
                     m.MapLeftKey("PlayerId");
                     m.MapRightKey("SquadId");
                     m.ToTable("SquadMembers");
-                });
+                });            
         }
     }
 }

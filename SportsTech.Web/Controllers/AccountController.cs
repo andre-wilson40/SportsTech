@@ -11,17 +11,13 @@ using Microsoft.Owin.Security;
 using SportsTech.Web.Models;
 using SportsTech.Web.Filters;
 using AutoMapper;
+using SportsTech.Data.Entity;
 
 namespace SportsTech.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
-        {
-        }
-
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
@@ -81,7 +77,6 @@ namespace SportsTech.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = Mapper.Map<ApplicationUser>(model);
-
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
