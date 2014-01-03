@@ -17,8 +17,10 @@ namespace SportsTech.Domain.Services
     {
         Task<List<TEntity>> GetAllAsync();
         Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> expression);
+    }
 
-        // TODO:  Should this be another interface?
+    public interface IWritableService<TEntity> where TEntity : IEntity
+    {
         TEntity Add(TEntity ev);
         void Remove(TEntity ev);
     }

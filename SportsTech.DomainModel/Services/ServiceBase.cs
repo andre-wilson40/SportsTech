@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Domain.Services
 {
-    public abstract class ServiceBase<TEntity> : IService, IService<TEntity> where TEntity: IEntity 
+    public abstract class ServiceBase<TEntity> : IService, IService<TEntity>, IWritableService<TEntity> where TEntity : IEntity 
     {
         protected IUnitOfWork UnitOfWork { get;  private set; }
         protected IRepository<TEntity> Repository { get; private set; }
