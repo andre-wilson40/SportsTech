@@ -21,6 +21,7 @@ namespace SportsTech.Domain.Services
 
     public interface IWritableService<TEntity> where TEntity : IEntity
     {
+        bool CanAdd(TEntity ev, IErrorHandler errorHandler);
         TEntity Add(TEntity ev);
         void Remove(TEntity ev);
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Data.Model
 {
-    public class Team
+    public class Team : IEntity
     {
         public Team()
         {

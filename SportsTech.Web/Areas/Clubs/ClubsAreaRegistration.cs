@@ -16,7 +16,7 @@ namespace SportsTech.Web.Areas.Clubs
         {
             context.MapRoute(
                 "Clubs_default",
-                "Clubs/{controller}/{action}/{id}",
+                "Clubs/{clubId}/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

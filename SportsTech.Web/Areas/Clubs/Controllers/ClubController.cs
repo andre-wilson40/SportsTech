@@ -54,7 +54,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         /// Shows information and details on clubs and how to create and use them.  A sort of help
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index(int id)
+        public ActionResult Index(int clubId)
         {
             return View("Index");
         }
@@ -92,7 +92,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int clubId)
         {
             // TODO: Currently we do not allow deleting of clubs
             return RedirectToAction("Index");

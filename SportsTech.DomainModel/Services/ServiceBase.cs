@@ -29,6 +29,11 @@ namespace SportsTech.Domain.Services
             return await Repository.AsQueryable().ToListAsync();
         }
 
+        public virtual bool CanAdd(TEntity ev, IErrorHandler errorHandler)
+        {
+            return true;
+        }
+
         public virtual TEntity Add(TEntity ev)
         {
             return Repository.Add(ev);
