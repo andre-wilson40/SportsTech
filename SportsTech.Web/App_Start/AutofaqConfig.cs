@@ -7,8 +7,10 @@ using SportsTech.Data.Entity;
 using SportsTech.Domain.Services;
 using SportsTech.Domain.Services.Core;
 using SportsTech.Web.Controllers;
+using SportsTech.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,10 +32,17 @@ namespace SportsTech.Web
 
         private static void RegisterDependencies(ContainerBuilder builder) 
         {
-            builder.RegisterType<SportsTech.Data.Entity.DataContext>().As<IDataContext>().InstancePerHttpRequest();
+            builder.RegisterType<SportsTech.Data.Entity.DataContext>()
+                .As<IDataContext>()
+                .InstancePerHttpRequest();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
-            builder.RegisterType<UserStore<ApplicationUser>>().As<IUserStore<ApplicationUser>>();
+            builder.RegisterType<UserStore<ApplicationUser>>()
+                   .As<IUserStore<ApplicationUser>>()
+                   .WithParameter((pi, ctx) => { return pi.Name == "context"; },
+                                  (pi, ctx) => { return ctx.Resolve<IDataContext>(); }
+                              );
+
             builder.RegisterType<UserManager<ApplicationUser>>().As<UserManager<ApplicationUser>>();            
             builder.RegisterType<BaseAuthenticatedController>().PropertiesAutowired();
             
@@ -42,6 +51,7 @@ namespace SportsTech.Web
 
         private static void RegisterServices(ContainerBuilder builder)
         {
+            builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<EventService>().As<IEventService>();
             builder.RegisterType<ClubService>().As<IClubService>();
         }

@@ -10,6 +10,11 @@ namespace SportsTech.Data.Model
 {
     public class UserProfile
     {
+        public UserProfile()
+        {
+            Clubs = new HashSet<Club>();
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 

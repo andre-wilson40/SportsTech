@@ -255,7 +255,7 @@ namespace SportsTech.Data.Entity.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AspNetRoles",
+                "dbo.Role",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -264,7 +264,7 @@ namespace SportsTech.Data.Entity.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AspNetUsers",
+                "dbo.User",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -279,7 +279,7 @@ namespace SportsTech.Data.Entity.Migrations
                 .Index(t => t.UserProfileId);
             
             CreateTable(
-                "dbo.AspNetUserClaims",
+                "dbo.UserClaim",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -288,11 +288,11 @@ namespace SportsTech.Data.Entity.Migrations
                         User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.User_Id, cascadeDelete: true)
                 .Index(t => t.User_Id);
             
             CreateTable(
-                "dbo.AspNetUserLogins",
+                "dbo.UserLogin",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
@@ -300,19 +300,19 @@ namespace SportsTech.Data.Entity.Migrations
                         ProviderKey = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.LoginProvider, t.ProviderKey })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AspNetUserRoles",
+                "dbo.UserRole",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Role", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.RoleId)
                 .Index(t => t.UserId);
             
@@ -359,11 +359,11 @@ namespace SportsTech.Data.Entity.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUsers", "UserProfileId", "dbo.UserProfile");
-            DropForeignKey("dbo.AspNetUserClaims", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.User", "UserProfileId", "dbo.UserProfile");
+            DropForeignKey("dbo.UserClaim", "User_Id", "dbo.User");
+            DropForeignKey("dbo.UserRole", "UserId", "dbo.User");
+            DropForeignKey("dbo.UserRole", "RoleId", "dbo.Role");
+            DropForeignKey("dbo.UserLogin", "UserId", "dbo.User");
             DropForeignKey("dbo.Teamsheet", "PositionId", "dbo.Position");
             DropForeignKey("dbo.Teamsheet", "PlayerId", "dbo.Player");
             DropForeignKey("dbo.SquadMembers", "SquadId", "dbo.Squad");
@@ -391,11 +391,11 @@ namespace SportsTech.Data.Entity.Migrations
             DropForeignKey("dbo.Season", "ClubId", "dbo.Club");
             DropForeignKey("dbo.Member", "MembershipId", "dbo.Membership");
             DropForeignKey("dbo.Member", "ClubId", "dbo.Club");
-            DropIndex("dbo.AspNetUsers", new[] { "UserProfileId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "User_Id" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.User", new[] { "UserProfileId" });
+            DropIndex("dbo.UserClaim", new[] { "User_Id" });
+            DropIndex("dbo.UserRole", new[] { "UserId" });
+            DropIndex("dbo.UserRole", new[] { "RoleId" });
+            DropIndex("dbo.UserLogin", new[] { "UserId" });
             DropIndex("dbo.Teamsheet", new[] { "PositionId" });
             DropIndex("dbo.Teamsheet", new[] { "PlayerId" });
             DropIndex("dbo.SquadMembers", new[] { "SquadId" });
@@ -426,11 +426,11 @@ namespace SportsTech.Data.Entity.Migrations
             DropTable("dbo.SquadMembers");
             DropTable("dbo.UserProfileClub");
             DropTable("dbo.TeamSeason");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.UserRole");
+            DropTable("dbo.UserLogin");
+            DropTable("dbo.UserClaim");
+            DropTable("dbo.User");
+            DropTable("dbo.Role");
             DropTable("dbo.Position");
             DropTable("dbo.Squad");
             DropTable("dbo.Player");

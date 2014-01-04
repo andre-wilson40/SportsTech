@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Domain.Services
 {
-    public interface IClubService : IService, IService<Data.Model.Club>
+    public interface IUserService
     {
-        Task<int> AffliatedClubCount();
+        Task<Data.Model.UserProfile> CurrentUserProfile();
     }
 }

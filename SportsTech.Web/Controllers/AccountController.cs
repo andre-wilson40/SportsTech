@@ -12,6 +12,7 @@ using SportsTech.Web.Models;
 using SportsTech.Web.Filters;
 using AutoMapper;
 using SportsTech.Data.Entity;
+using SportsTech.Data;
 
 namespace SportsTech.Web.Controllers
 {
@@ -77,7 +78,10 @@ namespace SportsTech.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = Mapper.Map<ApplicationUser>(model);
-                var result = await UserManager.CreateAsync(user, model.Password);
+
+                var result = UserManager.Create(user, model.Password);
+                UserManager.AddToRole(user.Id, Role.User);
+
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);

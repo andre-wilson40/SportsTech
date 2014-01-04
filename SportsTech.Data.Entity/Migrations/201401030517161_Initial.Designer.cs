@@ -13,7 +13,7 @@ namespace SportsTech.Data.Entity.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201401030048314_Initial"; }
+            get { return "201401030517161_Initial"; }
         }
         
         string IMigrationMetadata.Source

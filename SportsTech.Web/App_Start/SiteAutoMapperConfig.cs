@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SportsTech.Data;
 using SportsTech.Data.Entity;
 using SportsTech.Web.Models;
 using System;

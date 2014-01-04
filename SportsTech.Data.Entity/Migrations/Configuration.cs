@@ -2,7 +2,9 @@ namespace SportsTech.Data.Entity.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using SportsTech.Data.Model;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -16,45 +18,42 @@ namespace SportsTech.Data.Entity.Migrations
 
         protected override void Seed(SportsTech.Data.Entity.DataContext context)
         {
-            AddClubsAsRequired(context);
+            AddUsersAsRequired(context);
+            AddRolesAsRequired(context);             
         }
 
-        private void AddClubsAsRequired(SportsTech.Data.Entity.DataContext context)
+        private void AddUsersAsRequired(SportsTech.Data.Entity.DataContext context)
         {
-            AddRolesAsRequired(context);
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            //// If we have been here before don't go any further
-            //if (context.Clubs.Any(p => p.Name == "Waihou")) return;
+            if (userManager.FindByName("awilson") == null)
+            {
+                var awilson = new ApplicationUser
+                {
+                    UserName = "awilson",
+                    UserProfile = new Model.UserProfile
+                    {
+                        FirstName = "Andre",
+                        LastName = "Wilson",
+                        TimeZone = "en-NZ",
+                        DateFormat = "dd-mmm-yyyy",
+                        EmailAddress = "andre.wilson40@gmail.com",                        
+                    }
+                };
 
-            //context.Clubs.AddOrUpdate(
-            //    p => p.Name,
-            //    new Model.Club
-            //    {
-            //        Name = "Waihou",
-            //        Address = "Waihou",
-            //    });
-            
+                userManager.Create(awilson, "aw181979");
+                userManager.AddToRole(awilson.Id, Role.Administrator);
+                
+                var waihou = new Model.Club
+                    {
+                        Name = "Waihou",
+                        Address = "Waihou",
+                    };
+
+                awilson.UserProfile.Clubs.Add(waihou);              
+                context.SaveChanges();
+            }
         }
-
-        //private void AddUsersAsRequired(SportsTech.Web.Models.ApplicationDbContext context)
-        //{
-        //    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
-        //    if (userManager.FindByName("awilson") == null)
-        //    {
-        //        var registration = new RegisterViewModel
-        //        {
-        //            EmailAddress = "andre.wilson40@gmail.com",
-        //            FirstName = "Andre",
-        //            LastName = "Wilson",
-        //            UserName = "awilson"
-        //        };
-
-        //        var awilson = Mapper.Map<ApplicationUser>(registration);
-        //        awilson.Roles.Add(new IdentityUserRole() { Role = new IdentityRole(Role.Administrator) });
-        //        userManager.Create(awilson);
-        //    }
-        //}
 
         private void AddRolesAsRequired(SportsTech.Data.Entity.DataContext context)
         {
@@ -63,6 +62,8 @@ namespace SportsTech.Data.Entity.Migrations
             // Add Roles
             if (!roleManager.RoleExists(Role.User)) roleManager.Create(new IdentityRole(Role.User));
             if (!roleManager.RoleExists(Role.Administrator)) roleManager.Create(new IdentityRole(Role.Administrator));
+
+             
         }
     }
 }

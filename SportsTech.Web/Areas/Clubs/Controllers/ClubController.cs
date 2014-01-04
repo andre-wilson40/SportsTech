@@ -28,7 +28,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             var viewModel = new SiteHeaderViewModel
                 {
-                    ClubCount = _clubService.AffliatedClubCount(userId).Result
+                    ClubCount = _clubService.AffliatedClubCount().Result
                 };
 
             return PartialView("_SiteHeader", viewModel);
@@ -40,7 +40,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             int recordCount = 1;
             int filteredRecordCount = 1;
 
-            //var events = await _eventService.GetAllAsync();
+            var records = await _clubService.GetAllAsync();
 
             //var tableData = events.Select(p => new string[] {
             //    p.Id.ToString(),
@@ -51,6 +51,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             //    string.Empty,
             //    string.Empty
             //}).ToList();
+
             var tableData = new List<string[]>();
 
             return Json(new

@@ -29,7 +29,7 @@ namespace SportsTech.Data.Entity
         public virtual IDbSet<TagType> TagTypes { get; set; }
         public virtual IDbSet<Tag> Tags { get; set; }
         public virtual IDbSet<Stoppage> Stoppages { get; set; }
-
+        
         public DataContext()
             : base("DataContext")
         {
@@ -42,6 +42,13 @@ namespace SportsTech.Data.Entity
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityUser>().ToTable("User");
+            modelBuilder.Entity<ApplicationUser>().ToTable("User");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");
+            modelBuilder.Entity<IdentityRole>().ToTable("Role");
 
             modelBuilder.Entity<Club>()
                 .HasMany(v => v.UserProfiles)
