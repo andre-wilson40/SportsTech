@@ -225,11 +225,10 @@
     <Compile Include="Areas\Events\ViewModels\Dashboard\TeamViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseAuthenticatedController.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Areas\Events\Controllers\EventController.cs" />
     <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserProfileController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Filters\HttpAjaxAttribute.cs" />
     <Compile Include="Filters\HttpAjaxRedirectFilter.cs" />
     <Compile Include="Filters\UnHandledExceptionAttribute.cs" />
@@ -395,7 +394,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_SiteFooter.cshtml" />
     <Content Include="Views\Shared\_SiteHeader.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Events\Views\Event\List.cshtml" />
     <Content Include="Areas\Events\Views\Event\Create.cshtml" />
     <Content Include="Areas\Events\Views\Event\_EventForm.cshtml" />

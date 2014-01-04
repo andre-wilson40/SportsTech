@@ -374,7 +374,7 @@ namespace SportsTech.Web.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Home");
             }
         }
 

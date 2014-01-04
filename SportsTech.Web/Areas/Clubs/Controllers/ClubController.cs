@@ -87,13 +87,13 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             user.UserProfile.Clubs.Add(model);
 
             _clubService.SaveAnyChanges();
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(int id)
         {
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 	}
 }

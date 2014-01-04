@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace SportsTech.Web.Controllers
 {
-    public class UserProfileController : BaseAuthenticatedController
+    public class PageController : BaseAuthenticatedController
     {
         private readonly IClubService _clubService;
 
-        public UserProfileController(IClubService clubService)
+        public PageController(IClubService clubService)
         {
             _clubService = clubService;
         }
