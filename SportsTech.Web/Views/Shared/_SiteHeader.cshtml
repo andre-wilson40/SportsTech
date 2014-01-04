@@ -15,7 +15,8 @@
             {             
                 if (Model.Clubs.Count == 1)
                 {
-                    <li>@Html.ActionLink(Model.Clubs.First().Name, "List", "Club", new { Area = "Clubs" }, null)</li>
+                    var club = Model.Clubs.First();
+                    <li>@Html.ActionLink(club.Name, "Index", "Club", new { Area = "Clubs", id=club.Id }, null)</li>
                 }
                 else
                 {

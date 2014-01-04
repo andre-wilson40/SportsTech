@@ -20,7 +20,12 @@
     <div class="container body-content">
         @RenderSection("dialogs", false)
 
-        @RenderBody()
+        <div class="col-lg-2">
+            @Html.Partial("_ContextMenu")
+        </div>
+        <div class="col-lg-10">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             @Html.Partial("_SiteFooter")

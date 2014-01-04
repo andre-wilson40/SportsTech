@@ -213,6 +213,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Clubs\ClubsAreaRegistration.cs" />
     <Compile Include="Areas\Clubs\Controllers\ClubController.cs" />
+    <Compile Include="Areas\Clubs\Controllers\TeamController.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
     <Compile Include="Areas\Events\Controllers\ActivityController.cs" />
     <Compile Include="Areas\Events\Controllers\DashboardController.cs" />
@@ -343,6 +344,8 @@
     <Content Include="Areas\Clubs\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Clubs\Views\Club\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Club\_ClubForm.cshtml" />
+    <Content Include="Areas\Clubs\Views\Club\Index.cshtml" />
+    <Content Include="Areas\Clubs\Views\Shared\_ContextMenu.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -404,6 +407,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Clubs\Models\" />
     <Folder Include="Areas\Clubs\ViewModels\Shared\" />
+    <Folder Include="Areas\Clubs\Views\Team\" />
     <Folder Include="Areas\Events\Models\" />
     <Folder Include="Migrations\" />
     <Folder Include="ViewModels\Dashboard\" />

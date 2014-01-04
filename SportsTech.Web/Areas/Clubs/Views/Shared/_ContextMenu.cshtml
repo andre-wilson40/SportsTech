@@ -1,0 +1,22 @@
+﻿@{
+    var clubId = ViewContext.RouteData.Values["id"];
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Club menu</div>
+    <ul class="list-group">        
+        <li class="list-group-item">@Html.ActionLink("Teams", "List", "Team",new { clubId = clubId },null)</li>
+        <li class="list-group-item">@Html.ActionLink("Members", "Club", new { clubId = clubId })</li>
+        <li class ="list-group-item">@Html.ActionLink("Memberships", "Club", new { clubId = clubId })</li>
+        <li class="list-group-item">@Html.ActionLink("Players", "Club", new { clubId = clubId })</li>
+
+        @{
+            if(User.IsInRole(SportsTech.Data.Role.ClubManager))
+            { 
+                <text>>
+        <li class="list-group-item">@Html.ActionLink("User access", "Club")</li>
+                </text>
+            }
+        }
+    </ul>
+</div>

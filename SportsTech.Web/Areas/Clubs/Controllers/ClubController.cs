@@ -54,9 +54,9 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         /// Shows information and details on clubs and how to create and use them.  A sort of help
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            return View("Index");
         }
 
         /// <summary>
@@ -66,6 +66,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpGet]
         public ActionResult List()
         {
+            // TODO:  There are only ever one club per user at the moment.  Maybe a paid feature?
             return View("List");
         }
 
@@ -76,7 +77,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateViewModel viewModel)
+        public ActionResult Create(CreateViewModel viewModel)
         {
             if (!ModelState.IsValid) return Create();
 
@@ -93,6 +94,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(int id)
         {
+            // TODO: Currently we do not allow deleting of clubs
             return RedirectToAction("Index");
         }
 	}

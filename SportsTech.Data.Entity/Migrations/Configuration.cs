@@ -61,6 +61,7 @@ namespace SportsTech.Data.Entity.Migrations
             // Add Roles
             if (!roleManager.RoleExists(Role.User)) roleManager.Create(new IdentityRole(Role.User));
             if (!roleManager.RoleExists(Role.Administrator)) roleManager.Create(new IdentityRole(Role.Administrator));
+            if (!roleManager.RoleExists(Role.ClubManager)) roleManager.Create(new IdentityRole(Role.ClubManager));
         }
     }
 }
