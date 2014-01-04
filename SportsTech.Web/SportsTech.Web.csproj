@@ -229,12 +229,14 @@
     <Compile Include="Areas\Events\Controllers\EventController.cs" />
     <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Filters\HttpAjaxAttribute.cs" />
     <Compile Include="Filters\HttpAjaxRedirectFilter.cs" />
     <Compile Include="Filters\UnHandledExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Library\AsyncHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\NetwonSoftJsonActionResult.cs" />
     <Compile Include="Models\ResourceNotFoundException.cs" />
@@ -247,8 +249,9 @@
     <Compile Include="Areas\Events\ViewModels\Event\EditViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Activity\ListViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Event\ListViewModel.cs" />
-    <Compile Include="Areas\Clubs\ViewModels\Shared\SiteHeaderViewModel.cs" />
     <Compile Include="ViewModels\Shared\DeleteDialogViewModel.cs" />
+    <Compile Include="ViewModels\Shared\KeyPairViewModel.cs" />
+    <Compile Include="ViewModels\UserProfile\SiteHeaderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -341,7 +344,6 @@
     <Content Include="Areas\Clubs\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Clubs\Views\Club\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Club\_ClubForm.cshtml" />
-    <Content Include="Areas\Clubs\Views\Shared\_SiteHeader.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -403,11 +405,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Clubs\Models\" />
+    <Folder Include="Areas\Clubs\ViewModels\Shared\" />
     <Folder Include="Areas\Events\Models\" />
-    <Folder Include="Library\" />
     <Folder Include="Migrations\" />
     <Folder Include="ViewModels\Dashboard\" />
     <Folder Include="ViewModels\Home\" />
+    <Folder Include="Views\UserProfile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

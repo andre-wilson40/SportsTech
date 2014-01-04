@@ -22,7 +22,7 @@ namespace SportsTech.Web
         public static void Configure()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
 
             RegisterDependencies(builder);
 
@@ -31,6 +31,16 @@ namespace SportsTech.Web
         }
 
         private static void RegisterDependencies(ContainerBuilder builder) 
+        {
+            builder.Register(c => new HttpContextWrapper(HttpContext.Current))
+                .As<HttpContextBase>() 
+                .InstancePerHttpRequest();   
+         
+            RegisterDatabaseServices(builder);
+            RegisterServices(builder);
+        }
+
+        private static void RegisterDatabaseServices(ContainerBuilder builder)
         {
             builder.RegisterType<SportsTech.Data.Entity.DataContext>()
                 .As<IDataContext>()
@@ -44,9 +54,6 @@ namespace SportsTech.Web
                               );
 
             builder.RegisterType<UserManager<ApplicationUser>>().As<UserManager<ApplicationUser>>();            
-            builder.RegisterType<BaseAuthenticatedController>().PropertiesAutowired();
-            
-            RegisterServices(builder);
         }
 
         private static void RegisterServices(ContainerBuilder builder)

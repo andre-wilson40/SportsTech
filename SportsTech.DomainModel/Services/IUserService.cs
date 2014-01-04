@@ -9,6 +9,6 @@ namespace SportsTech.Domain.Services
 {
     public interface IUserService
     {
-        Task<Data.Model.UserProfile> CurrentUserProfile();
+        Data.Model.UserProfile CurrentUserProfile();
     }
 }

@@ -20,11 +20,13 @@ namespace SportsTech.Web.Models
             _httpContext = httpContext;
         }
 
-        public async Task<Data.Model.UserProfile> CurrentUserProfile()
+        public Data.Model.UserProfile CurrentUserProfile()
         {
             var userName = _httpContext.User.Identity.Name.ToString();
 
-            var user = await _userManager.FindByNameAsync(userName);
+            if (string.IsNullOrWhiteSpace(userName)) return new Data.Model.UserProfile();
+
+            var user = _userManager.FindByName(userName);
 
             return user.UserProfile;
         }

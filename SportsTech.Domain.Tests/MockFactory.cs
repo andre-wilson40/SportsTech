@@ -11,6 +11,10 @@ using System.Reflection;
 using System.Data.Entity.Design.PluralizationServices;
 using System.Globalization;
 using SportsTech.Data.Model;
+using SportsTech.Domain.Services;
+using Moq.Language.Flow;
+using Moq.Language;
+using System.Threading.Tasks;
 
 namespace SportsTech.Domain.Tests
 {
@@ -18,9 +22,34 @@ namespace SportsTech.Domain.Tests
     {
         public static IDataContext GetEmptyContext()
         {
-            var dataContext = new DataContext();
-            
-            return dataContext;
+            return new DataContext();
+        }
+
+        public static UserProfile GetUserProfile()
+        {
+            return new UserProfile
+                {
+                    Id = 1,
+                    FirstName = "Andre",
+                    LastName = "Wilson",
+                    EmailAddress = "andre.wilson40@gmail.com",
+                    TimeZone = "en-NZ"
+                };
+        }
+
+        public static Mock<IUserService> GetUserService(IUnitOfWork uow)
+        {            
+            var clubRepository = uow.GetRepository<Data.Model.Club>();
+
+            var userProfile = GetUserProfile();
+            userProfile.Clubs = clubRepository.AsQueryable().ToList() ;
+
+            var mockService = new Mock<IUserService>();
+            mockService
+                .Setup(m => m.CurrentUserProfile())
+                .Returns(userProfile);
+
+            return mockService;
         }
 
         public static IUnitOfWork GetUnitOfWork(IDataContext dataContext)
@@ -48,6 +77,13 @@ namespace SportsTech.Domain.Tests
             return mockSet;
         }
 
+        public static IReturnsResult<TMock> ReturnsAsync<TMock, TResult>(
+            this IReturns<TMock, Task<TResult>> setup, TResult value)
+            where TMock : class
+        {
+            return setup.Returns(Task.FromResult(value));
+        }
+        
         internal class DataContext : IDataContext
         {
             public virtual IDbSet<UserProfile> UserProfiles { get; set; }

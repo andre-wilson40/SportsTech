@@ -22,18 +22,5 @@ namespace SportsTech.Web.Controllers
         {
             return View("Index");
         }
-
-        //[AllowAnonymous]
-        //public ActionResult SiteHeader()
-        //{
-        //    //var userId = Request.IsAuthenticated ? GetCurrentUser().UserProfile.Id : 0;
-            
-        //    //var viewModel = new SiteHeaderViewModel
-        //    //    {
-        //    //        ClubCount = _clubService.AffliatedClubCount(userId).Result
-        //    //    };
-
-        //    return PartialView("_SiteHeader"); //, viewModel);
-        //}
 	}
 }

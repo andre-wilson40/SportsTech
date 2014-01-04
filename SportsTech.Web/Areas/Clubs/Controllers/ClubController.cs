@@ -21,19 +21,6 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             _clubService = clubService;
         }
 
-        [AllowAnonymous]
-        public ActionResult SiteHeader()
-        {
-            var userId = GetCurrentUser().UserProfile.Id;
-
-            var viewModel = new SiteHeaderViewModel
-                {
-                    ClubCount = _clubService.AffliatedClubCount().Result
-                };
-
-            return PartialView("_SiteHeader", viewModel);
-        }
-
         [HttpPost]
         public async Task<ActionResult> DataTable(Datatables.Mvc.DataTable dataTableParams)
         {

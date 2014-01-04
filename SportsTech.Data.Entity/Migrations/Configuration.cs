@@ -18,8 +18,8 @@ namespace SportsTech.Data.Entity.Migrations
 
         protected override void Seed(SportsTech.Data.Entity.DataContext context)
         {
-            AddUsersAsRequired(context);
-            AddRolesAsRequired(context);             
+            AddRolesAsRequired(context);        
+            AddUsersAsRequired(context);     
         }
 
         private void AddUsersAsRequired(SportsTech.Data.Entity.DataContext context)
@@ -41,17 +41,16 @@ namespace SportsTech.Data.Entity.Migrations
                     }
                 };
 
-                userManager.Create(awilson, "aw181979");
-                userManager.AddToRole(awilson.Id, Role.Administrator);
-                
                 var waihou = new Model.Club
                     {
                         Name = "Waihou",
                         Address = "Waihou",
                     };
 
-                awilson.UserProfile.Clubs.Add(waihou);              
-                context.SaveChanges();
+                awilson.UserProfile.Clubs.Add(waihou);
+
+                userManager.Create(awilson, "aw181979");
+                userManager.AddToRole(awilson.Id, Role.Administrator);                
             }
         }
 
@@ -62,8 +61,6 @@ namespace SportsTech.Data.Entity.Migrations
             // Add Roles
             if (!roleManager.RoleExists(Role.User)) roleManager.Create(new IdentityRole(Role.User));
             if (!roleManager.RoleExists(Role.Administrator)) roleManager.Create(new IdentityRole(Role.Administrator));
-
-             
         }
     }
 }

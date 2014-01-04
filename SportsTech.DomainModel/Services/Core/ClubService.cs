@@ -10,7 +10,7 @@ namespace SportsTech.Domain.Services.Core
 {
     public class ClubService : ServiceBase<Data.Model.Club>, IClubService
     {
-        private int _currentUserId;
+        private readonly int _currentUserId;
 
         public ClubService(
             IUnitOfWork unitOfWork,
