@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SportsTech.Domain.Services;
+using SportsTech.Web.Areas.Clubs.Models;
 using SportsTech.Web.Areas.Clubs.ViewModels;
 using SportsTech.Web.Areas.Clubs.ViewModels.Club;
 using SportsTech.Web.Controllers;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace SportsTech.Web.Areas.Clubs.Controllers
 {
+    [ClubAuthorize]
     public class ClubController : BaseAuthenticatedController
     {
         private readonly IClubService _clubService;
@@ -70,13 +72,18 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return View("List");
         }
 
-        [HttpGet]
+        [HttpGet, 
+        OverrideClubAuthorize,
+        Authorize]
         public ActionResult Create()
         {
             return View("Create");
         }
 
-        [HttpPost]
+        [HttpPost, 
+        ValidateAntiForgeryToken, 
+        OverrideClubAuthorize,
+        Authorize]
         public ActionResult Create(CreateViewModel viewModel)
         {
             if (!ModelState.IsValid) return Create();

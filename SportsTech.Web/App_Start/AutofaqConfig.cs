@@ -65,7 +65,7 @@ namespace SportsTech.Web
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<EventService>().As<IEventService>();
             builder.RegisterType<ClubService>().As<IClubService>();
-
+            
             builder.RegisterType<TeamService>().As<ITeamService>()
                        .WithParameter((pi, ctx) => { return pi.Name == "club"; },
                                       (pi, ctx) => 

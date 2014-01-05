@@ -1,4 +1,5 @@
 ﻿using SportsTech.Domain.Services;
+using SportsTech.Web.Areas.Clubs.Models;
 using SportsTech.Web.Areas.Clubs.ViewModels.Team;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SportsTech.Web.Areas.Clubs.Controllers
 {
+    [ClubAuthorizeAttribute]
     public class TeamController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
         private readonly ITeamService _teamService;
@@ -100,6 +102,16 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             _teamService.Add(team);
             _teamService.SaveAnyChanges();
+
+            return RedirectToAction("List");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var team = await _teamService.SingleAsync(p => p.Id == id);
+
+            _teamService.Remove(team);
 
             return RedirectToAction("List");
         }
