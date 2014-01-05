@@ -9,5 +9,6 @@ namespace SportsTech.Domain.Services
 {
     public interface ITeamService : IService, IService<Team>, IWritableService<Team>
     {
+        Task<Data.Model.Team> GetByIdAsync(int id);
     }
 }

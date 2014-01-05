@@ -13,6 +13,14 @@ namespace SportsTech.Domain.Services
         protected IUnitOfWork UnitOfWork { get;  private set; }
         protected IRepository<TEntity> Repository { get; private set; }
 
+        protected virtual IQueryable<TEntity> QueryAsync
+        {
+            get
+            {
+                return Repository.AsQueryable();
+            }
+        }
+
         protected ServiceBase(IUnitOfWork unitOfWork)
         {
             UnitOfWork = unitOfWork;
@@ -26,12 +34,27 @@ namespace SportsTech.Domain.Services
 
         public virtual async Task<List<TEntity>> GetAllAsync()
         {
-            return await Repository.AsQueryable().ToListAsync();
+            return await QueryAsync.ToListAsync();
         }
 
-        public virtual bool CanAdd(TEntity ev, IErrorHandler errorHandler)
+        public virtual async Task<List<TEntity>> GetAllAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
-            return errorHandler.IsValid;
+            return await QueryAsync.Where(expression).ToListAsync();
+        }
+
+        public ICollection<TEntity> GetAllOrderByAsync(System.Linq.Expressions.Expression<Func<TEntity, string>> keySelector)
+        {
+            return QueryAsync.OrderBy(keySelector).ToList();
+        }
+
+        public ICollection<TEntity> GetAllOrderByDescendingAsync(System.Linq.Expressions.Expression<Func<TEntity, string>> keySelector)
+        {
+            return QueryAsync.OrderByDescending(keySelector).ToList();
+        }
+
+        public virtual Task<bool> CanAdd(TEntity ev, IErrorHandler errorHandler)
+        {
+            return Task.Run(() => errorHandler.IsValid);
         }
 
         public virtual TEntity Add(TEntity ev)

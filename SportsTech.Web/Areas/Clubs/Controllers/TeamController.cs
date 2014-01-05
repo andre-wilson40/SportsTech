@@ -28,6 +28,11 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             var records = await _teamService.GetAllAsync();
 
+            if(!string.IsNullOrWhiteSpace(dataTableParams.sSearch))
+            {
+                records = await _teamService.GetAllAsync(p => p.Name.Contains(dataTableParams.sSearch));
+            }
+
             var tableData = records.Select(p => new string[] {
                 p.Id.ToString(),
                 p.Name,
@@ -53,7 +58,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
-            var team = await _teamService.SingleAsync(p => p.Id == id);
+            var team = await _teamService.GetByIdAsync(id);
             var viewModel = AutoMapper.Mapper.Map<CreateViewModel>(team);
 
             return View("Edit", viewModel);
@@ -64,12 +69,12 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         {
             if (!ModelState.IsValid) return View(viewModel);
 
-            var team = await _teamService.SingleAsync(p => p.Id == viewModel.Id);
+            var team = await _teamService.GetByIdAsync(viewModel.Id.GetValueOrDefault());
             AutoMapper.Mapper.Map<CreateViewModel, Data.Model.Team>(viewModel, team);
 
             var errorHandler = CreateModelErrorHandler();
 
-            if (! _teamService.CanAdd(team,errorHandler))
+            if (! await _teamService.CanAdd(team,errorHandler))
             {
                  return View(viewModel);
             }
@@ -95,7 +100,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             var team = AutoMapper.Mapper.Map<Data.Model.Team>(viewModel);
             var errorHandler = CreateModelErrorHandler();
 
-            if (! _teamService.CanAdd(team,errorHandler))
+            if (! await _teamService.CanAdd(team,errorHandler))
             {
                 return Create();
             }
@@ -109,9 +114,10 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id)
         {
-            var team = await _teamService.SingleAsync(p => p.Id == id);
+            var team = await _teamService.GetByIdAsync(id);
 
             _teamService.Remove(team);
+            _teamService.SaveAnyChanges();
 
             return RedirectToAction("List");
         }

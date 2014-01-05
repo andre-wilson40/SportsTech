@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
+using LinqKit;
 
 namespace SportsTech.Domain.Services.Core
 {
@@ -19,31 +20,35 @@ namespace SportsTech.Domain.Services.Core
             _club = club;
         }
 
+        protected override IQueryable<Data.Model.Team> QueryAsync
+        {
+            get
+            {
+                return Repository.AsQueryable().Where(p => p.ClubId == _club.Id);
+            }
+        }
+
         public override Data.Model.Team Add(Data.Model.Team ev)
         {
             ev.Club = _club;
             return base.Add(ev);
         }
 
-        public override async Task<List<Data.Model.Team>> GetAllAsync()
+        public override async Task<bool> CanAdd(Data.Model.Team ev, IErrorHandler errorHandler)
         {
-            return await Repository
-                .AsQueryable()
-                .Where(p => p.ClubId == _club.Id)
-                .ToListAsync();
-        }
-
-        public override bool CanAdd(Data.Model.Team ev, IErrorHandler errorHandler)
-        {
-            var exists = AnyAsync(p => p.Name == ev.Name && p.ClubId == _club.Id);
-            exists.Wait();
-
-            if (exists.Result)
+            var exists = await AnyAsync(p => p.Name == ev.Name && p.ClubId == _club.Id);
+            
+            if (exists)
             {
                 errorHandler.AddError("Name", "This team already exists", ErrorTypeEnum.Error);
             }
 
-            return base.CanAdd(ev, errorHandler);
+            return await base.CanAdd(ev, errorHandler);
+        }
+
+        public Task<Data.Model.Team> GetByIdAsync(int id)
+        {
+            return SingleAsync(p => p.Id == id && p.ClubId == _club.Id);
         }
     }
 }
