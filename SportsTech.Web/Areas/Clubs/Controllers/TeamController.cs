@@ -24,16 +24,14 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             int recordCount = 1;
             int filteredRecordCount = 1;
 
-            //var records = await _clubService.GetAllAsync();
+            var records = await _teamService.GetAllAsync();
 
-            //var tableData = events.Select(p => new string[] {
-            //    p.Id.ToString(),
-            //    "Waihou Seniors",
-            //    string.Empty,
-            //    string.Empty
-            //}).ToList();
-
-            var tableData = new List<string[]>();
+            var tableData = records.Select(p => new string[] {
+                p.Id.ToString(),
+                p.Name,
+                string.Empty,
+                string.Empty
+            }).ToList();
 
             return Json(new
             {
@@ -74,7 +72,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             _teamService.Add(team);
             _teamService.SaveAnyChanges();
 
-            return RedirectToAction("Edit", 0);
+            return RedirectToAction("List");
         }
 	}
 }

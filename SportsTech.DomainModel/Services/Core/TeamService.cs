@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,14 @@ namespace SportsTech.Domain.Services.Core
         {
             ev.Club = _club;
             return base.Add(ev);
+        }
+
+        public override async Task<List<Data.Model.Team>> GetAllAsync()
+        {
+            return await Repository
+                .AsQueryable()
+                .Where(p => p.ClubId == _club.Id)
+                .ToListAsync();
         }
 
         public override bool CanAdd(Data.Model.Team ev, IErrorHandler errorHandler)
