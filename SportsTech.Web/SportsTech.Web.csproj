@@ -351,6 +351,7 @@
     <Content Include="Areas\Clubs\Views\Team\List.cshtml" />
     <Content Include="Areas\Clubs\Views\Team\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Team\_TeamForm.cshtml" />
+    <Content Include="Areas\Clubs\Views\Team\Edit.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />

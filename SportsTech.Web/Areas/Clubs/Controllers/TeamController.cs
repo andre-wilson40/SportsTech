@@ -49,6 +49,35 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult> Edit(int id)
+        {
+            var team = await _teamService.SingleAsync(p => p.Id == id);
+            var viewModel = AutoMapper.Mapper.Map<CreateViewModel>(team);
+
+            return View("Edit", viewModel);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int clubId, CreateViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+
+            var team = await _teamService.SingleAsync(p => p.Id == viewModel.Id);
+            AutoMapper.Mapper.Map<CreateViewModel, Data.Model.Team>(viewModel, team);
+
+            var errorHandler = CreateModelErrorHandler();
+
+            if (! _teamService.CanAdd(team,errorHandler))
+            {
+                 return View(viewModel);
+            }
+
+            _teamService.SaveAnyChanges();
+
+            return RedirectToAction("List");
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             // Returns a partial for creating a game
