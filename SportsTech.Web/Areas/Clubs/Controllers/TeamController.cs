@@ -23,15 +23,15 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpPost]
         public async Task<ActionResult> DataTable(Datatables.Mvc.DataTable dataTableParams)
         {
-            int recordCount = 1;
-            int filteredRecordCount = 1;
-
             var records = await _teamService.GetAllAsync();
-
+            int recordCount = records.Count;
+            
             if(!string.IsNullOrWhiteSpace(dataTableParams.sSearch))
             {
                 records = await _teamService.GetAllAsync(p => p.Name.Contains(dataTableParams.sSearch));
             }
+
+            int filteredRecordCount = records.Count;
 
             var tableData = records.Select(p => new string[] {
                 p.Id.ToString(),

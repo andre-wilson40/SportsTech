@@ -23,9 +23,6 @@ namespace SportsTech.Web.Areas.Clubs.Models
 
     public class ClubAuthorizeAttribute : AuthorizeAttribute
     {
-        private readonly int _userId;
-        private readonly Data.Model.Club _club;
-
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (!filterContext.HttpContext.User.Identity.IsAuthenticated) return;
