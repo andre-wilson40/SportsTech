@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorValueDictionary.cs" />
     <Compile Include="IErrorHandler.cs" />
     <Compile Include="Services\Core\ClubService.cs" />
     <Compile Include="Services\Core\EventService.cs" />

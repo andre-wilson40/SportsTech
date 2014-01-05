@@ -10,5 +10,6 @@ namespace SportsTech.Data
     {
         IRepository<TModel> GetRepository<TModel>() where TModel : class;
         int SaveAnyChanges();
+        Task<int> SaveAnyChangesAsync();
     }
 }

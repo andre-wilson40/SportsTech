@@ -31,7 +31,7 @@ namespace SportsTech.Domain.Services
 
         public virtual bool CanAdd(TEntity ev, IErrorHandler errorHandler)
         {
-            return true;
+            return errorHandler.IsValid;
         }
 
         public virtual TEntity Add(TEntity ev)
@@ -47,6 +47,16 @@ namespace SportsTech.Domain.Services
         public virtual Task<TEntity> SingleAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
             return Repository.SingleAsync(expression);
+        }
+
+        protected virtual Task<TEntity> SingleOrDefaultAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
+        {
+            return Repository.SingleOrDefaultAsync(expression);
+        }
+
+        protected virtual Task<bool> AnyAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
+        {
+            return Repository.AnyAsync(expression);
         }
 
         protected virtual Task<int> CountAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)

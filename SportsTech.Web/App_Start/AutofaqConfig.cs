@@ -32,12 +32,16 @@ namespace SportsTech.Web
 
         private static void RegisterDependencies(ContainerBuilder builder) 
         {
-            builder.Register(c => new HttpContextWrapper(HttpContext.Current))
-                .As<HttpContextBase>() 
-                .InstancePerHttpRequest();   
-         
+            RegisterHttpDependencies(builder);
             RegisterDatabaseServices(builder);
             RegisterServices(builder);
+        }
+
+        private static void RegisterHttpDependencies(ContainerBuilder builder)
+        {
+            builder.Register(c => new HttpContextWrapper(HttpContext.Current))
+                .As<HttpContextBase>() 
+                .InstancePerHttpRequest();
         }
 
         private static void RegisterDatabaseServices(ContainerBuilder builder)
@@ -61,6 +65,19 @@ namespace SportsTech.Web
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<EventService>().As<IEventService>();
             builder.RegisterType<ClubService>().As<IClubService>();
+
+            builder.RegisterType<TeamService>().As<ITeamService>()
+                       .WithParameter((pi, ctx) => { return pi.Name == "club"; },
+                                      (pi, ctx) => 
+                                      { 
+                                          var clubService = ctx.Resolve<IClubService>();
+                                          var contextWrapper = ctx.Resolve<HttpContextBase>();
+                                          var clubId = Int32.Parse(contextWrapper.Request.RequestContext.RouteData.Values["clubId"].ToString());
+
+                                          return Library.AsyncHelpers.RunSync<Data.Model.Club>(() => clubService.SingleAsync(p => p.Id == clubId));
+                                      }
+                              );
+            ;
         }
     }
 }

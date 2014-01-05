@@ -19,6 +19,11 @@ namespace SportsTech.Web.Controllers
         /// </summary>
         public UserManager<ApplicationUser> UserManager { get; set; }
 
+        protected Domain.IErrorHandler CreateModelErrorHandler()
+        {
+            return new ModelStateAdapter(ModelState);
+        }
+
         protected ApplicationUser GetCurrentUser()
         {
             var user = UserManager.FindByNameAsync(User.Identity.Name).Result;            

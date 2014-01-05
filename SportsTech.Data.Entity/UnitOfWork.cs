@@ -24,6 +24,11 @@ namespace SportsTech.Data.Entity
         {
             return _dataContext.SaveChanges();
         }
+
+        public Task<int> SaveAnyChangesAsync()
+        {
+            return _dataContext.SaveChangesAsync();
+        }
     }
 
 }

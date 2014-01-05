@@ -6,13 +6,13 @@
         <li class ="list-group-item">@Html.ActionLink("Memberships", "Club")</li>
         <li class="list-group-item">@Html.ActionLink("Players", "Club")</li>
 
-        @{
+        @*@{ // This code gives us a login exception.  I suspect the IsInRole doesn't like our new table setup
             if(User.IsInRole(SportsTech.Data.Role.ClubManager))
             { 
                 <text>>
         <li class="list-group-item">@Html.ActionLink("User access", "Club")</li>
                 </text>
             }
-        }
+        }*@
     </ul>
 </div>

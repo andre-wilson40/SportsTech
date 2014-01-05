@@ -123,6 +123,12 @@ namespace SportsTech.Domain.Tests
             {
                 Events = CreateDbSet(new List<Data.Model.Event>()).Object;
             }
+
+
+            public Task<int> SaveChangesAsync()
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

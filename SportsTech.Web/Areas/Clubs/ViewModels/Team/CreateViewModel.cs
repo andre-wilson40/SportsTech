@@ -11,7 +11,7 @@ namespace SportsTech.Web.Areas.Clubs.ViewModels.Team
     [Validator(typeof(CreateViewModelValidator))]
     public class CreateViewModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [DisplayName("Name")]
         public string Name { get; set; }

@@ -58,16 +58,17 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateViewModel viewModel)
+        public async Task<ActionResult> Create(int clubId, CreateViewModel viewModel)
         {
             // Handle this better?
             if (!ModelState.IsValid) return Create();
 
             var team = AutoMapper.Mapper.Map<Data.Model.Team>(viewModel);
+            var errorHandler = CreateModelErrorHandler();
 
-            if (!_teamService.CanAdd(team,null))
+            if (! _teamService.CanAdd(team,errorHandler))
             {
-                //ModelState.AddModelError("Name", "Validtion errors")
+                return Create();
             }
 
             _teamService.Add(team);
