@@ -45,6 +45,7 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Model\Club.cs" />
+    <Compile Include="Model\Competition.cs" />
     <Compile Include="Model\CompetitionRegistration.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\EventParticipants.cs" />

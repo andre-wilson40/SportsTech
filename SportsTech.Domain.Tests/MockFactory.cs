@@ -129,6 +129,19 @@ namespace SportsTech.Domain.Tests
             {
                 throw new NotImplementedException();
             }
+
+
+            public IDbSet<Competition> Competitions
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+                set
+                {
+                    throw new NotImplementedException();
+                }
+            }
         }
     }
 }

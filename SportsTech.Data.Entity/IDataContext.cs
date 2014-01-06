@@ -29,7 +29,8 @@ namespace SportsTech.Data.Entity
         IDbSet<TagType> TagTypes { get; set; }
         IDbSet<Tag> Tags { get; set; }
         IDbSet<Stoppage> Stoppages { get; set; }
-
+        IDbSet<Competition> Competitions { get; set; }
+        
         System.Data.Entity.Database Database { get; }
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;        
         int SaveChanges();

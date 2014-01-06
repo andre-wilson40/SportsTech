@@ -67,17 +67,19 @@ namespace SportsTech.Web
             builder.RegisterType<ClubService>().As<IClubService>();
             
             builder.RegisterType<TeamService>().As<ITeamService>()
-                       .WithParameter((pi, ctx) => { return pi.Name == "club"; },
-                                      (pi, ctx) => 
-                                      { 
-                                          var clubService = ctx.Resolve<IClubService>();
-                                          var contextWrapper = ctx.Resolve<HttpContextBase>();
-                                          var clubId = Int32.Parse(contextWrapper.Request.RequestContext.RouteData.Values["clubId"].ToString());
+                       .WithParameter((pi, ctx) => { return pi.Name == "club"; }, ResolveClub);
+            
+            builder.RegisterType<CompetitionService>().As<ICompetitionService>()
+                       .WithParameter((pi, ctx) => { return pi.Name == "club"; }, ResolveClub);            
+        }
 
-                                          return Library.AsyncHelpers.RunSync<Data.Model.Club>(() => clubService.SingleAsync(p => p.Id == clubId));
-                                      }
-                              );
-            ;
+        private static Data.Model.Club ResolveClub(System.Reflection.ParameterInfo pi, IComponentContext ctx)
+        {
+            var clubService = ctx.Resolve<IClubService>();
+            var contextWrapper = ctx.Resolve<HttpContextBase>();
+            var clubId = Int32.Parse(contextWrapper.Request.RequestContext.RouteData.Values["clubId"].ToString());
+
+            return Library.AsyncHelpers.RunSync<Data.Model.Club>(() => clubService.SingleAsync(p => p.Id == clubId));
         }
     }
 }

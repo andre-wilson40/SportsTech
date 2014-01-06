@@ -29,6 +29,7 @@ namespace SportsTech.Data.Entity
         public virtual IDbSet<TagType> TagTypes { get; set; }
         public virtual IDbSet<Tag> Tags { get; set; }
         public virtual IDbSet<Stoppage> Stoppages { get; set; }
+        public virtual IDbSet<Competition> Competitions { get; set; }
         
         public DataContext()
             : base("DataContext")

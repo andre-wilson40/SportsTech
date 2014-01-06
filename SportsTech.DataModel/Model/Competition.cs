@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Data.Model
 {
-    public class Season
+    public class Competition : IEntity
     {
-        public Season()
+        public Competition()
         {
-            Teams = new HashSet<Team>();
+            Seasons = new HashSet<Season>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,13 +21,10 @@ namespace SportsTech.Data.Model
         [Required, MaxLength(50)]
         public string Name { get; set; }
 
-        [ForeignKey("CompetitionId")]
-        public Competition Competition { get; set; }
-        public int CompetitionId { get; set; }
+        [ForeignKey("ClubId")]
+        public Club Club { get; set; }
+        public int ClubId { get; set; }
 
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-
-        public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<Season> Seasons { get; set; }
     }
 }

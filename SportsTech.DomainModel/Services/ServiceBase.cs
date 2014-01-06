@@ -69,22 +69,22 @@ namespace SportsTech.Domain.Services
 
         public virtual Task<TEntity> SingleAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
-            return Repository.SingleAsync(expression);
+            return QueryAsync.SingleAsync(expression);
         }
 
         protected virtual Task<TEntity> SingleOrDefaultAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
-            return Repository.SingleOrDefaultAsync(expression);
+            return QueryAsync.SingleOrDefaultAsync(expression);
         }
 
         protected virtual Task<bool> AnyAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
-            return Repository.AnyAsync(expression);
+            return QueryAsync.AnyAsync(expression);
         }
 
         protected virtual Task<int> CountAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
-            return Repository.CountAsync(expression);
+            return QueryAsync.CountAsync(expression);
         }
     }
 }

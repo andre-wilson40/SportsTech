@@ -53,9 +53,11 @@
     <Compile Include="ErrorValueDictionary.cs" />
     <Compile Include="IErrorHandler.cs" />
     <Compile Include="Services\Core\ClubService.cs" />
+    <Compile Include="Services\Core\CompetitionService.cs" />
     <Compile Include="Services\Core\EventService.cs" />
     <Compile Include="Services\Core\TeamService.cs" />
     <Compile Include="Services\IClubService.cs" />
+    <Compile Include="Services\ICompetitionService.cs" />
     <Compile Include="Services\ITeamService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\ServiceBase.cs" />

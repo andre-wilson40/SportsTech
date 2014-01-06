@@ -31,6 +31,10 @@ namespace SportsTech.Web
             Mapper.CreateMap<Data.Model.Team, Areas.Clubs.ViewModels.Team.CreateViewModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(v => v.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(v => v.Name));
+
+            Mapper.CreateMap<Data.Model.Competition, Areas.Clubs.ViewModels.Competition.CreateViewModel>();
+            Mapper.CreateMap<Areas.Clubs.ViewModels.Competition.CreateViewModel, Data.Model.Competition>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(v => v.Name.Trim()));
         }
     }
 }

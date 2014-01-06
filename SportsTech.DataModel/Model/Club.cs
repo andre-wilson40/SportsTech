@@ -12,9 +12,9 @@ namespace SportsTech.Data.Model
     {
         public Club()
         {
-            Seasons = new HashSet<Season>();
             Members = new HashSet<Member>();
             UserProfiles = new HashSet<UserProfile>();
+            Competitions = new HashSet<Competition>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,10 +26,10 @@ namespace SportsTech.Data.Model
         [MaxLength(255)]
         public string Address { get; set; }
 
-        public virtual ICollection<Season> Seasons { get; set; }
-
         public virtual ICollection<Member> Members { get; set; }
 
         public virtual ICollection<UserProfile> UserProfiles { get; set; }
+
+        public virtual ICollection<Competition> Competitions { get; set; }
     }
 }
