@@ -214,6 +214,7 @@
     <Compile Include="Areas\Clubs\ClubsAreaRegistration.cs" />
     <Compile Include="Areas\Clubs\Controllers\ClubController.cs" />
     <Compile Include="Areas\Clubs\Controllers\CompetitionController.cs" />
+    <Compile Include="Areas\Clubs\Controllers\SeasonController.cs" />
     <Compile Include="Areas\Clubs\Controllers\TeamController.cs" />
     <Compile Include="Areas\Clubs\Models\ClubAuthorizeAttribute.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
@@ -361,6 +362,7 @@
     <Content Include="Areas\Clubs\Views\Competition\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Competition\_CompetitionForm.cshtml" />
     <Content Include="Areas\Clubs\Views\Competition\Edit.cshtml" />
+    <Content Include="Areas\Clubs\Views\Season\List.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />

@@ -70,7 +70,9 @@ namespace SportsTech.Web
                        .WithParameter((pi, ctx) => { return pi.Name == "club"; }, ResolveClub);
             
             builder.RegisterType<CompetitionService>().As<ICompetitionService>()
-                       .WithParameter((pi, ctx) => { return pi.Name == "club"; }, ResolveClub);            
+                       .WithParameter((pi, ctx) => { return pi.Name == "club"; }, ResolveClub);
+
+            builder.RegisterType<SeasonServiceFactory>().As<ISeasonServiceFactory>();
         }
 
         private static Data.Model.Club ResolveClub(System.Reflection.ParameterInfo pi, IComponentContext ctx)
