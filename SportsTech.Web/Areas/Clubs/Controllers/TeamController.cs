@@ -1,6 +1,7 @@
 ﻿using SportsTech.Domain.Services;
 using SportsTech.Web.Areas.Clubs.Models;
 using SportsTech.Web.Areas.Clubs.ViewModels.Team;
+using SportsTech.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,13 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
     public class TeamController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
         private readonly ITeamService _teamService;
+        private readonly IClubService _clubService;
 
-        public TeamController(ITeamService teamService)
+        public TeamController(
+            IClubService clubService,
+            ITeamService teamService)
         {
+            _clubService = clubService;
             _teamService = teamService;
         }
 
@@ -50,8 +55,15 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpGet]
-        public ActionResult List(int clubId)
+        public async Task<ActionResult> List(int clubId)
         {
+            var club = await _clubService.GetByIdAsync(clubId);            
+            var clubBreadCrumb = new ClubAdapter(club).GetBreadCrumb(Url);
+
+            CreateBreadCrumb(new BreadCrumb("Teams"),
+                             clubBreadCrumb
+            );
+            
             return View("List");
         }
 

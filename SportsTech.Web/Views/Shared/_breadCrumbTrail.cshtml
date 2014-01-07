@@ -1,0 +1,13 @@
+﻿@{
+    var trail = ViewBag.Crumb as SportsTech.Web.Models.BreadCrumbTrail;
+
+    if (SportsTech.Web.Models.BreadCrumbTrail.HasTrail(trail))
+    {
+        <ol class="breadcrumb">
+            @foreach (var crumb in trail.BreadCrumbs)
+            {
+                <li>@MvcHtmlString.Create(crumb.ToString())</li>
+            }
+        </ol>
+    }
+}

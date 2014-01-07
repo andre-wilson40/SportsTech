@@ -24,7 +24,12 @@
             @Html.Partial("_ContextMenu")
         </div>
         <div class="col-lg-10">
-            @RenderBody()
+            <div class="row">
+                @Html.Partial("_breadCrumbTrail")
+            </div>
+            <div class="row">
+                @RenderBody()
+            </div>
         </div>
         <hr />
         <footer>

@@ -33,5 +33,11 @@ namespace SportsTech.Domain.Services.Core
                 .Where(p => p.UserProfiles.Any(u => u.Id == _currentUserId))
                 .ToListAsync();
         }
+
+
+        public Task<Data.Model.Club> GetByIdAsync(int id)
+        {
+            return SingleAsync(p => p.Id == id);
+        }
     }
 }

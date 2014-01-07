@@ -242,6 +242,8 @@
     </Compile>
     <Compile Include="Library\AsyncHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BreadCrumb.cs" />
+    <Compile Include="Models\ClubAdapter.cs" />
     <Compile Include="Models\ModelStateAdapter.cs" />
     <Compile Include="Models\NetwonSoftJsonActionResult.cs" />
     <Compile Include="Models\ResourceNotFoundException.cs" />
@@ -415,6 +417,7 @@
     <Content Include="Areas\Events\Views\Event\_EventForm.cshtml" />
     <Content Include="Views\Dialog\_DeleteDialog.cshtml" />
     <Content Include="Scripts\site.validate.unobtrusive.js" />
+    <Content Include="Views\Shared\_breadCrumbTrail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

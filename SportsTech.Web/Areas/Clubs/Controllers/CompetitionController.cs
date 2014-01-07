@@ -1,5 +1,6 @@
 ﻿using SportsTech.Domain.Services;
 using SportsTech.Web.Areas.Clubs.ViewModels.Competition;
+using SportsTech.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,14 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
     public class CompetitionController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
         private readonly ICompetitionService _competitionService;
+        private readonly IClubService _clubService;
 
-        public CompetitionController(ICompetitionService competitionService)
+        public CompetitionController(
+            IClubService clubService,
+            ICompetitionService competitionService)
         {
             _competitionService = competitionService;
+            _clubService = clubService;
         }
 
         [HttpPost]
@@ -48,8 +53,15 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpGet]
-        public ActionResult List(int clubId)
+        public async Task<ActionResult> List(int clubId)
         {
+            var club = await _clubService.GetByIdAsync(clubId);
+            var clubBreadCrumb = new ClubAdapter(club).GetBreadCrumb(Url);
+
+            CreateBreadCrumb(new BreadCrumb("Competitions"),
+                             clubBreadCrumb
+            );
+            
             return View("List");
         }
 

@@ -37,5 +37,13 @@ namespace SportsTech.Web.Controllers
         {
             throw new ResourceNotFoundException();
         }
+
+        protected void CreateBreadCrumb(params BreadCrumb[] breadCrumbs)
+        {
+            var trail = BreadCrumbTrail.Create();
+            breadCrumbs.ToList().ForEach(p => trail.Add(p));
+
+            ViewBag.Crumb = trail;
+        }
     }
 }

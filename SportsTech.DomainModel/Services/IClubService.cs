@@ -10,5 +10,6 @@ namespace SportsTech.Domain.Services
     public interface IClubService : IService, IService<Data.Model.Club>
     {
         Task<int> AffliatedClubCount();
+        Task<Data.Model.Club> GetByIdAsync(int id);
     }
 }
