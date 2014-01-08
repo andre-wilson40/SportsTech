@@ -67,12 +67,20 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             var clubBreadCrumb = new ClubAdapter(club).GetBreadCrumb(Url);
 
             CreateBreadCrumb(clubBreadCrumb,
-                             new BreadCrumb("Competitions", Url.Action("List", "Competition")),
-                             new BreadCrumb(competition.Name)
+                             new BreadCrumb(competition.Name, Url.Action("List", "Competition")),
+                             new BreadCrumb("Seasons")
             );
             
 
             return View("List", id);
         }
+
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
 	}
 }

@@ -25,6 +25,18 @@ namespace SportsTech.Domain.Services.Core
             }
         }
 
+        public override async Task<bool> CanAdd(Data.Model.Season ev, IErrorHandler errorHandler)
+        {
+            var exists = await AnyAsync(p => p.Name == ev.Name && p.Id != ev.Id);
+            
+            if (exists)
+            {
+                errorHandler.AddError("Name", "This season already exists", ErrorTypeEnum.Error);
+            }
+
+            return await base.CanAdd(ev, errorHandler);        
+        }
+
         public Task<Data.Model.Season> GetByIdAsync(int id)
         {
             return SingleAsync(p => p.Id == id);

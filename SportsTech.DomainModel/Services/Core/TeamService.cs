@@ -36,7 +36,7 @@ namespace SportsTech.Domain.Services.Core
 
         public override async Task<bool> CanAdd(Data.Model.Team ev, IErrorHandler errorHandler)
         {
-            var exists = await AnyAsync(p => p.Name == ev.Name && p.ClubId == _club.Id);
+            var exists = await AnyAsync(p => p.Name == ev.Name && p.Id != ev.Id);
             
             if (exists)
             {
