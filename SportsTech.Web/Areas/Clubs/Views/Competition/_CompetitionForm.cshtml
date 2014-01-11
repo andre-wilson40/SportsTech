@@ -1,8 +1,8 @@
 ﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Competition.CreateViewModel
 
 <div class="form-group">
-    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
+    @Html.LabelFor(model => model.Name, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-10">
         @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Name)
     </div>

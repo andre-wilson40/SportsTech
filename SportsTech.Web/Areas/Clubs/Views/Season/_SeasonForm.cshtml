@@ -1,32 +1,27 @@
 ﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Season.CreateViewModel
 
 <div class="form-group">
-    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
+    @Html.LabelFor(model => model.Name, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-10">
         @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Name)
     </div>
 </div>
 <div class="form-group row">
-    @Html.LabelFor(model => model.From, new { @class = "control-label col-md-2" })
-    <div class="col-md-3">
-        @*@Html.EditorFor(model => model.From, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.From)*@
-        @*TODO:  Create editor for for date time*@
-        @*http://kenyontechnology.com/2013/10/08/datepicker-for-bootstrap-with-twitter-bootstrap-3-0/*@
-        <div class="input-group date" id="dp3" data-date="12-02-2012" data-date-format="mm-dd-yyyy"> 
-        <input class="form-control" type="text" readonly="" value="12-02-2012"> <span class="input-group-addon">
-            <i class="glyphicon glyphicon-calendar"></i>
-            </span> 
-        </div>
+    @Html.LabelFor(model => model.From, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-3">
+        @Html.EditorFor(model => model.From)
+        @Html.ValidationMessageFor(model => model.From)        
     </div>
+    <div class="col-xs-7">&nbsp;</div>
 </div>
 <div class="form-group">
-    @Html.LabelFor(model => model.To, new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.EditorFor(model => model.To, new { @class = "form-control" })
+    @Html.LabelFor(model => model.To, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-3">
+        @Html.EditorFor(model => model.To)
         @Html.ValidationMessageFor(model => model.To)
     </div>
+    <div class="col-xs-7">&nbsp;</div>
 </div>
 
 <div>

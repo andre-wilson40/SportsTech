@@ -1,0 +1,26 @@
+﻿@model DateTime
+
+@{
+    var dateFormat = "dd-mm-yyyy"; // TODO:  Get this from the current user
+    var dateDisplay = Model.ToString("dd-MM-yyyy");
+    var fieldId = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var dpFieldId = "dp" + fieldId;
+}
+
+@*http://kenyontechnology.com/2013/10/08/datepicker-for-bootstrap-with-twitter-bootstrap-3-0/*@
+<div class="input-group date"  id="@dpFieldId" data-date="@dateDisplay" data-date-format="@dateFormat">
+    <input class="form-control" type="text" readonly="" value="@dateDisplay"> 
+    @Html.HiddenFor(m => m)
+    <span class="input-group-addon span1">
+        <i class="glyphicon glyphicon-calendar"></i>
+    </span>    
+</div>
+<script>
+    $(function () {
+        $('#@dpFieldId').datepicker({
+            format: '@dateFormat'
+        }).on('changeDate', function(ev){
+            $('#@fieldId').val(ev.date.toString('@dateFormat'));
+        });
+    });
+</script>

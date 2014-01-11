@@ -80,7 +80,13 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpGet]
         public ActionResult Create(int competitionId)
         {
-            return View("Create", new CreateViewModel { CompetitionId = competitionId });
+            return View("Create", new CreateViewModel 
+            { 
+                CompetitionId = competitionId,
+                From = new DateTime(DateTime.Now.Year, 3, 1),
+                To = new DateTime(DateTime.Now.Year, 8, 1),
+                ReturnUrl = Url.Action("List", new { id = competitionId })
+            });
         }
 
 
@@ -101,7 +107,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             seasonService.Add(season);
             seasonService.SaveAnyChanges();
 
-            return RedirectToAction("List");
+            return Redirect(viewModel.ReturnUrl);
         }
 	}
 }

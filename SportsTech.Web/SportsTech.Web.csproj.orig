@@ -365,9 +365,12 @@
     <Content Include="Areas\Clubs\Views\Competition\_CompetitionForm.cshtml" />
     <Content Include="Areas\Clubs\Views\Competition\Edit.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\List.cshtml" />
+<<<<<<< Updated upstream
     <Content Include="Areas\Clubs\Views\Season\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\_SeasonForm.cshtml" />
+=======
     <None Include="Properties\PublishProfiles\Rezare Test Environment.pubxml" />
+>>>>>>> Stashed changes
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
@@ -426,7 +429,6 @@
     <Content Include="Views\Dialog\_DeleteDialog.cshtml" />
     <Content Include="Scripts\site.validate.unobtrusive.js" />
     <Content Include="Views\Shared\_breadCrumbTrail.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

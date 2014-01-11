@@ -23,6 +23,8 @@ namespace SportsTech.Web.Areas.Clubs.ViewModels.Season
 
         [DisplayName("Season ends")]
         public DateTime To { get; set; }
+
+        public string ReturnUrl { get; set; }
     }
 
     public class CreateViewModelValidator : AbstractValidator<CreateViewModel>
