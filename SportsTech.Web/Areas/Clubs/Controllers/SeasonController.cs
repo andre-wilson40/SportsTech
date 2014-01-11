@@ -1,4 +1,5 @@
 ﻿using SportsTech.Domain.Services;
+using SportsTech.Web.Areas.Clubs.Models;
 using SportsTech.Web.Areas.Clubs.ViewModels.Season;
 using SportsTech.Web.Models;
 using SportsTech.Web.Services;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace SportsTech.Web.Areas.Clubs.Controllers
 {
+    [ClubAuthorize]
     public class SeasonController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
         private readonly ISeasonServiceFactory _seasonServiceFactory;   

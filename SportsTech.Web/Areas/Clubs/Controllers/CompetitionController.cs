@@ -1,4 +1,5 @@
 ﻿using SportsTech.Domain.Services;
+using SportsTech.Web.Areas.Clubs.Models;
 using SportsTech.Web.Areas.Clubs.ViewModels.Competition;
 using SportsTech.Web.Models;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SportsTech.Web.Areas.Clubs.Controllers
 {
+    [ClubAuthorize]
     public class CompetitionController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
         private readonly ICompetitionService _competitionService;

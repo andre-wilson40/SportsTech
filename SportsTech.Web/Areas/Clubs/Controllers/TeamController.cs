@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SportsTech.Web.Areas.Clubs.Controllers
 {
-    [ClubAuthorizeAttribute]
+    [ClubAuthorize]
     public class TeamController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
         private readonly ITeamService _teamService;
