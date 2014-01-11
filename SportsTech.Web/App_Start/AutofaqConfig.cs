@@ -8,6 +8,8 @@ using SportsTech.Domain.Services;
 using SportsTech.Domain.Services.Core;
 using SportsTech.Web.Controllers;
 using SportsTech.Web.Models;
+using SportsTech.Web.Services;
+using SportsTech.Web.Services.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,6 +37,7 @@ namespace SportsTech.Web
             RegisterHttpDependencies(builder);
             RegisterDatabaseServices(builder);
             RegisterServices(builder);
+            RegisterWebServices(builder);
         }
 
         private static void RegisterHttpDependencies(ContainerBuilder builder)
@@ -58,6 +61,11 @@ namespace SportsTech.Web
                               );
 
             builder.RegisterType<UserManager<ApplicationUser>>().As<UserManager<ApplicationUser>>();            
+        }
+
+        private static void RegisterWebServices(ContainerBuilder builder)
+        {
+            builder.RegisterType<ClubSeasonFacadeService>().As<IClubSeasonFacadeService>();
         }
 
         private static void RegisterServices(ContainerBuilder builder)

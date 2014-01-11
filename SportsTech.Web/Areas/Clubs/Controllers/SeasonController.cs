@@ -1,6 +1,7 @@
 ﻿using SportsTech.Domain.Services;
 using SportsTech.Web.Areas.Clubs.ViewModels.Season;
 using SportsTech.Web.Models;
+using SportsTech.Web.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,14 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 {
     public class SeasonController : SportsTech.Web.Controllers.BaseAuthenticatedController
     {
-        private readonly IClubService _clubService;
-        private readonly ISeasonServiceFactory _seasonServiceFactory;
-        private readonly ICompetitionService _competitionService;
+        private readonly ISeasonServiceFactory _seasonServiceFactory;   
+        private readonly IClubSeasonFacadeService _clubSeasonService;
 
         public SeasonController(
-            IClubService clubService,
-            ICompetitionService competitionService,
+            IClubSeasonFacadeService clubSeasonService,
             ISeasonServiceFactory seasonServiceFactory)
         {
-            _clubService = clubService;
-            _competitionService = competitionService;
+            _clubSeasonService = clubSeasonService;
             _seasonServiceFactory = seasonServiceFactory;
         }
 
@@ -64,16 +62,14 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         [HttpGet]
         public async Task<ActionResult> List(int id, int clubId)
         {
-            var club = await _clubService.GetByIdAsync(clubId);
-            var competition = await _competitionService.GetByIdAsync(id);
-            var clubBreadCrumb = new ClubAdapter(club).GetBreadCrumb(Url);
-
+            var clubCompetition = await _clubSeasonService.GetClubCompetitionAsync(id);
+            var clubBreadCrumb = clubCompetition.GetBreadCrumb(Url);
+            
             CreateBreadCrumb(clubBreadCrumb,
-                             new BreadCrumb(competition.Name, Url.Action("List", "Competition")),
+                             new BreadCrumb(clubCompetition.CompetitionName, Url.Action("List", "Competition")),
                              new BreadCrumb("Seasons")
             );
             
-
             return View("List", id);
         }
 

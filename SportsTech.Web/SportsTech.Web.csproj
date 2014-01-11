@@ -246,12 +246,15 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BreadCrumb.cs" />
     <Compile Include="Models\ClubAdapter.cs" />
+    <Compile Include="Models\ClubSeason.cs" />
     <Compile Include="Models\ModelStateAdapter.cs" />
     <Compile Include="Models\NetwonSoftJsonActionResult.cs" />
     <Compile Include="Models\ResourceNotFoundException.cs" />
     <Compile Include="Models\UserService.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.TakeLast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IClubSeasonFacadeService.cs" />
+    <Compile Include="Services\Implementation\ClubSeasonFacadeService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Areas\Events\ViewModels\Event\CreateViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Event\EditTeamViewModel.cs" />
