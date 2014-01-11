@@ -9,7 +9,7 @@ namespace SportsTech.Domain.Services.Core
     public class CompetitionService : ServiceBase<Data.Model.Competition>, ICompetitionService
     {
         private readonly Data.Model.Club _club;
-
+        
         public CompetitionService(
             Data.Model.Club club,
             Data.IUnitOfWork unitOfWork)

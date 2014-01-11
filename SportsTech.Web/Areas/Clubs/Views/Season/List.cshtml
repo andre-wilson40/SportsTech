@@ -11,8 +11,8 @@
             ],
             dataTableCreateUrl:'@Url.Action("Create", new { competitionId = Model })',
             dataTableLoadUrl: '@Url.Action("DataTable", new { competitionId = Model })',
-            dataTableEditUrl: '@Url.Action("List", "Draw")',
-            dataTableDashboardUrl: '@Url.Action("Edit", "Season")',
+            dataTableEditUrl: '@Url.Action("Edit", "Season")',
+            dataTableDashboardUrl: '@Url.Action("List", "Draw")',
             dataTableShowDelete: true
         };
 
@@ -25,7 +25,7 @@
 }
 
 @section dialogs {
-    @{  Html.RenderAction("Delete", "Dialog", new { Area = "", dialog = new SportsTech.Web.ViewModels.Shared.DeleteDialogViewModel { ControllerName = "Competition", Area = "Clubs" } }); }
+    @{  Html.RenderAction("Delete", "Dialog", new { Area = "", dialog = new SportsTech.Web.ViewModels.Shared.DeleteDialogViewModel { ControllerName = "Season", Area = "Clubs" } }); }
 }
 
 <p>

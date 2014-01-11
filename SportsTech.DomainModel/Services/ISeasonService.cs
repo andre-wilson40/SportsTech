@@ -14,5 +14,6 @@ namespace SportsTech.Domain.Services
     public interface ISeasonServiceFactory
     {
         Task<ISeasonService> CreateAsync(int competitionId);
+        ISeasonService Create();
     }
 }

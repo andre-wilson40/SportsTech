@@ -109,5 +109,52 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             return Redirect(viewModel.ReturnUrl);
         }
+
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
+        {
+            var seasonService = _seasonServiceFactory.Create();
+            var season = seasonService.GetByIdAsync(id);
+
+            var viewModel = AutoMapper.Mapper.Map<CreateViewModel>(season);
+
+            return View("Edit", viewModel);
+        }
+
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int clubId, CreateViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+
+            var seasonService = _seasonServiceFactory.Create();
+            var season = await seasonService.GetByIdAsync(viewModel.Id.GetValueOrDefault());
+            AutoMapper.Mapper.Map<CreateViewModel, Data.Model.Season>(viewModel, season);
+
+            var errorHandler = CreateModelErrorHandler();
+
+            if (!await seasonService.CanAdd(season, errorHandler))
+            {
+                return View(viewModel);
+            }
+
+            seasonService.SaveAnyChanges();
+
+            return RedirectToAction("List");
+        }
+
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var seasonService =  _seasonServiceFactory.Create();
+            var season = await seasonService.GetByIdAsync(id);
+
+            seasonService.Remove(season);
+            seasonService.SaveAnyChanges();
+
+            return RedirectToAction("List", new { id=season.CompetitionId });
+        }
 	}
 }

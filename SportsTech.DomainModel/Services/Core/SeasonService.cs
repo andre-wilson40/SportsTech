@@ -43,6 +43,19 @@ namespace SportsTech.Domain.Services.Core
         }
     }
 
+    public class SeasonFetchService : ServiceBase<Data.Model.Season>, ISeasonService
+    {
+        public SeasonFetchService(
+            Data.IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
+        public Task<Data.Model.Season> GetByIdAsync(int id)
+        {
+            return SingleAsync(p => p.Id == id);
+        }
+    }
+
     public class SeasonServiceFactory : ISeasonServiceFactory
     {
         private readonly ICompetitionService _competitionService;
@@ -54,6 +67,11 @@ namespace SportsTech.Domain.Services.Core
         {
             _unitOfWork = unitOfWork;
             _competitionService = competitionService;
+        }
+
+        public ISeasonService Create()
+        {
+            return new SeasonFetchService(_unitOfWork);
         }
 
         public async Task<ISeasonService> CreateAsync(int competitionId)
