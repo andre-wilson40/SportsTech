@@ -36,7 +36,7 @@ namespace SportsTech.Data.Entity.Migrations
                         FirstName = "Andre",
                         LastName = "Wilson",
                         TimeZone = "en-NZ",
-                        DateFormat = "dd-mmm-yyyy",
+                        DateFormat = "dd-MMM-yyyy",
                         EmailAddress = "andre.wilson40@gmail.com",                        
                     }
                 };

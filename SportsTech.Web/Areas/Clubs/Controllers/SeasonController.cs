@@ -40,12 +40,13 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             }
 
             int filteredRecordCount = records.Count;
+            var user = GetCurrentUser();
 
             var tableData = records.Select(p => new string[] {
                 p.Id.ToString(),
                 p.Name,
-                p.From.ToString(),
-                p.To.ToString(),
+                p.From.ToString(user.UserProfile.DateFormat),
+                p.To.ToString(user.UserProfile.DateFormat),
                 string.Empty,
                 string.Empty
             }).ToList();

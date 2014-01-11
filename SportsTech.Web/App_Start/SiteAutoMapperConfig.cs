@@ -22,7 +22,7 @@ namespace SportsTech.Web
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(v => v.LastName.Trim()))
                 .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(v => v.EmailAddress.Trim()))
                 .ForMember(dest => dest.TimeZone, opt => opt.UseValue("en-NZ"))
-                .ForMember(dest => dest.DateFormat, opt => opt.UseValue("dd-MM-yyyy"));
+                .ForMember(dest => dest.DateFormat, opt => opt.UseValue("dd-MMM-yyyy"));
 
             Mapper.CreateMap<Areas.Clubs.ViewModels.Club.CreateViewModel, Data.Model.Club>();
 
