@@ -367,6 +367,7 @@
     <Content Include="Areas\Clubs\Views\Season\List.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\_SeasonForm.cshtml" />
+    <Content Include="Areas\Clubs\Views\Season\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Rezare Test Environment.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />

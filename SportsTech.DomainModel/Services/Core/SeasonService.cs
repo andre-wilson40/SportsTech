@@ -45,9 +45,20 @@ namespace SportsTech.Domain.Services.Core
 
     public class SeasonFetchService : ServiceBase<Data.Model.Season>, ISeasonService
     {
+        private ISeasonServiceFactory _serviceFactory;
+
         public SeasonFetchService(
-            Data.IUnitOfWork unitOfWork) : base(unitOfWork)
+            Data.IUnitOfWork unitOfWork,
+            ISeasonServiceFactory serviceFactory) : base(unitOfWork)
         {
+            _serviceFactory = serviceFactory;
+        }
+        
+        public override async Task<bool> CanAdd(Data.Model.Season ev, IErrorHandler errorHandler)
+        {
+            var seasonService = await _serviceFactory.CreateAsync(ev.CompetitionId);
+
+            return await seasonService.CanAdd(ev, errorHandler);
         }
 
         public Task<Data.Model.Season> GetByIdAsync(int id)
@@ -71,7 +82,7 @@ namespace SportsTech.Domain.Services.Core
 
         public ISeasonService Create()
         {
-            return new SeasonFetchService(_unitOfWork);
+            return new SeasonFetchService(_unitOfWork, this);
         }
 
         public async Task<ISeasonService> CreateAsync(int competitionId)

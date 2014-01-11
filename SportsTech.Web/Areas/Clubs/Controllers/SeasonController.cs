@@ -115,9 +115,10 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var seasonService = _seasonServiceFactory.Create();
-            var season = seasonService.GetByIdAsync(id);
+            var season = await seasonService.GetByIdAsync(id);
 
             var viewModel = AutoMapper.Mapper.Map<CreateViewModel>(season);
+            viewModel.ReturnUrl = Url.Action("List", new { id = season.CompetitionId });
 
             return View("Edit", viewModel);
         }
@@ -141,7 +142,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             seasonService.SaveAnyChanges();
 
-            return RedirectToAction("List");
+            return RedirectToAction("List", new { id = season.CompetitionId });
         }
 
 
