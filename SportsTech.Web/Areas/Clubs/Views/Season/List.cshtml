@@ -9,7 +9,7 @@
                 { sName: "From" },
                 { sName: "To" }
             ],
-            dataTableCreateUrl:'@Url.Action("Create")',
+            dataTableCreateUrl:'@Url.Action("Create", new { competitionId = Model })',
             dataTableLoadUrl: '@Url.Action("DataTable", new { competitionId = Model })',
             dataTableEditUrl: '@Url.Action("List", "Draw")',
             dataTableDashboardUrl: '@Url.Action("Edit", "Season")',

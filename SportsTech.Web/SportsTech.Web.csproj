@@ -219,6 +219,7 @@
     <Compile Include="Areas\Clubs\Models\ClubAuthorizeAttribute.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Competition\CreateViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Season\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Team\CreateViewModel.cs" />
     <Compile Include="Areas\Events\Controllers\ActivityController.cs" />
     <Compile Include="Areas\Events\Controllers\DashboardController.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="ViewModels\UserProfile\SiteHeaderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -363,7 +365,10 @@
     <Content Include="Areas\Clubs\Views\Competition\_CompetitionForm.cshtml" />
     <Content Include="Areas\Clubs\Views\Competition\Edit.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\List.cshtml" />
+    <Content Include="Areas\Clubs\Views\Season\Create.cshtml" />
+    <Content Include="Areas\Clubs\Views\Season\_SeasonForm.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.datatables.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -23,7 +23,8 @@ namespace SportsTech.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap.datatables.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootstrap-datetimepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
                 "~/Scripts/jquery.dataTables.js"));
@@ -34,7 +35,8 @@ namespace SportsTech.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/themes/base/minified/juery-ui.min.css"));
+                      "~/Content/themes/base/minified/juery-ui.min.css",
+                      "~/Content/bootstrap-datetimepicker.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base").Include(
                       "~/Content/themes/base/minified/jquery-ui.min.css"));

@@ -1,4 +1,5 @@
 ﻿using SportsTech.Domain.Services;
+using SportsTech.Web.Areas.Clubs.ViewModels.Season;
 using SportsTech.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -77,10 +78,30 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int competitionId)
         {
-            return View("Create");
+            return View("Create", new CreateViewModel { CompetitionId = competitionId });
         }
 
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(int clubId, CreateViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return Create(viewModel.CompetitionId);
+
+            var season = AutoMapper.Mapper.Map<Data.Model.Season>(viewModel);
+            var errorHandler = CreateModelErrorHandler();
+            var seasonService = await _seasonServiceFactory.CreateAsync(season.CompetitionId);
+            
+            if (!await seasonService.CanAdd(season, errorHandler))
+            {
+                return Create(viewModel.CompetitionId);
+            }
+
+            seasonService.Add(season);
+            seasonService.SaveAnyChanges();
+
+            return RedirectToAction("List");
+        }
 	}
 }

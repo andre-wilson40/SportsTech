@@ -1,0 +1,40 @@
+﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Season.CreateViewModel
+
+@{
+    ViewBag.Title = "Create new season";
+}
+
+@using (Html.BeginForm("Create", "Season", FormMethod.Post, new { id = "CreateNew" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        @Html.Partial("_SeasonForm", Model)
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="cancel-create-btn" type="submit" value="Create" class="btn btn-primary" />
+                <input id="cancel-event-btn" type="button" value="Cancel" class="btn btn-default btn-cancel" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $('#cancel-event-btn').on('click', function () {
+                site.core.redirect('@Url.Action("List")');
+            });
+
+            $('.input-group.date').datepicker({
+                autoClose: true,
+                todayBtn: true,
+                orientation: "auto left"
+            });
+        });       
+    </script>
+}
