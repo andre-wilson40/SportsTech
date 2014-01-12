@@ -22,7 +22,7 @@ namespace SportsTech.Data.Model
         public string Name { get; set; }
 
         [ForeignKey("ClubId")]
-        public Club Club { get; set; }
+        public virtual Club Club { get; set; }
         public int ClubId { get; set; }
 
         public virtual ICollection<Season> Seasons { get; set; }

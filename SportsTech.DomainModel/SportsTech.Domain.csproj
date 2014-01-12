@@ -56,10 +56,12 @@
     <Compile Include="Services\Core\CompetitionService.cs" />
     <Compile Include="Services\Core\EventService.cs" />
     <Compile Include="Services\Core\SeasonService.cs" />
+    <Compile Include="Services\Core\TeamCompetitionService.cs" />
     <Compile Include="Services\Core\TeamService.cs" />
     <Compile Include="Services\IClubService.cs" />
     <Compile Include="Services\ICompetitionService.cs" />
     <Compile Include="Services\ISeasonService.cs" />
+    <Compile Include="Services\ITeamCompetitionService.cs" />
     <Compile Include="Services\ITeamService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\ServiceBase.cs" />

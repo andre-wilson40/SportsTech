@@ -1,0 +1,35 @@
+﻿@model SportsTech.Web.Areas.Clubs.ViewModels.TeamCompetition.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register in competition";
+}
+
+@using (Html.BeginForm("Register", "TeamCompetition", FormMethod.Post, new { id = "CreateNew" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        @Html.Partial("_RegisterForm", Model)
+
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input id="cancel-create-btn" type="submit" value="Register" class="btn btn-primary" />
+                <input id="cancel-event-btn" type="button" value="Cancel" class="btn btn-default btn-cancel" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $('#cancel-event-btn').on('click', function () {
+                site.core.redirect('@Url.Action("List", "TeamCompetition", new { id = Model.TeamId})');
+            });
+        });
+    </script>
+}
+

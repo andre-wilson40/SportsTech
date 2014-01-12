@@ -27,11 +27,11 @@ namespace SportsTech.Data.Model
         public virtual ICollection<EventTag> EventTags { get; set; }
 
         [ForeignKey("TeamId")]
-        public Team Team { get; set; }
+        public virtual Team Team { get; set; }
         public int? TeamId { get; set; }
 
         [ForeignKey("OppositionId")]
-        public Opposition Opposition { get; set; }
+        public virtual Opposition Opposition { get; set; }
         public int? OppositionId { get; set; }
 
         public bool IsHomeGame { get; set; }

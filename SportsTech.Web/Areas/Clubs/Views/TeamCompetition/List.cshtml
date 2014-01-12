@@ -1,0 +1,43 @@
+﻿@model int
+
+@section scripts
+{
+    <script>
+        var Page = {
+            dataTableColumns: [
+                { sName: "Competition" },
+                { sName: "Season" }
+            ],
+            dataTableCreateUrl:'@Url.Action("Register", new { teamId = Model })',
+            dataTableLoadUrl: '@Url.Action("DataTable", new { teamId = Model })',
+          //  dataTableEditUrl: '@Url.Action("Edit", "TeamCompetition")',
+            dataTableDashboardUrl: '', // Goes to the event dashboard '@Url.Action("List", "Draw")',
+            dataTableShowDelete: true
+        };
+
+        $(function () {
+            // Add page functions here
+        });
+    </script>
+
+    <script src="~/Scripts/page.dataTable.js"></script>
+}
+
+@section dialogs {
+    @{  Html.RenderAction("Delete", "Dialog", new { Area = "", dialog = new SportsTech.Web.ViewModels.Shared.DeleteDialogViewModel { ControllerName = "TeamCompetition", Area = "Clubs" } }); }
+}
+
+<p>
+    <button id="create-btn" class="btn btn-primary">Register in competition</button>
+</p>
+<div id="create-container" style="display:none;"></div>
+<table id="dtable" class="table table-striped table-bordered table-hover responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Competition</th>
+            <th>Season</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>

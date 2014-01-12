@@ -215,11 +215,14 @@
     <Compile Include="Areas\Clubs\Controllers\ClubController.cs" />
     <Compile Include="Areas\Clubs\Controllers\CompetitionController.cs" />
     <Compile Include="Areas\Clubs\Controllers\SeasonController.cs" />
+    <Compile Include="Areas\Clubs\Controllers\TeamCompetitionController.cs" />
     <Compile Include="Areas\Clubs\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Clubs\Mapping\TeamCompetition\RegisterMap.cs" />
     <Compile Include="Areas\Clubs\Models\ClubAuthorizeAttribute.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Competition\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Season\CreateViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\TeamCompetition\RegisterViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Team\CreateViewModel.cs" />
     <Compile Include="Areas\Events\Controllers\ActivityController.cs" />
     <Compile Include="Areas\Events\Controllers\DashboardController.cs" />
@@ -371,6 +374,9 @@
     <Content Include="Areas\Clubs\Views\Season\Create.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\_SeasonForm.cshtml" />
     <Content Include="Areas\Clubs\Views\Season\Edit.cshtml" />
+    <Content Include="Areas\Clubs\Views\TeamCompetition\List.cshtml" />
+    <Content Include="Areas\Clubs\Views\TeamCompetition\Register.cshtml" />
+    <Content Include="Areas\Clubs\Views\TeamCompetition\_RegisterForm.cshtml" />
     <None Include="Properties\PublishProfiles\Rezare Test Environment.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />

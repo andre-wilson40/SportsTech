@@ -12,7 +12,7 @@ namespace SportsTech.Data.Model
     {
         public Team()
         {
-            Seasons = new HashSet<Season>();
+           // Seasons = new HashSet<Season>();
             CompetitionRegistrations = new HashSet<CompetitionRegistration>();
         }
 
@@ -26,7 +26,7 @@ namespace SportsTech.Data.Model
         [Required, MaxLength(50)]
         public string Name { get; set; }
 
-        public virtual ICollection<Season> Seasons { get; set; }
+        // public virtual ICollection<Season> Seasons { get; set; }
         public virtual ICollection<CompetitionRegistration> CompetitionRegistrations { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace SportsTech.Data.Model
     {
         public Season()
         {
-            Teams = new HashSet<Team>();
+            CompetitionRegistrations = new HashSet<CompetitionRegistration>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,12 +22,12 @@ namespace SportsTech.Data.Model
         public string Name { get; set; }
 
         [ForeignKey("CompetitionId")]
-        public Competition Competition { get; set; }
+        public virtual Competition Competition { get; set; }
         public int CompetitionId { get; set; }
 
         public DateTime From { get; set; }
         public DateTime To { get; set; }
 
-        public virtual ICollection<Team> Teams { get; set; }
+        public virtual ICollection<CompetitionRegistration> CompetitionRegistrations { get; set; }
     }
 }

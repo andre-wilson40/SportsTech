@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SportsTech.Data.Model
 {
-    public class CompetitionRegistration
+    public class CompetitionRegistration : IEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

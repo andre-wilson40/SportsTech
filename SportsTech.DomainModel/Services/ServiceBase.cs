@@ -72,17 +72,17 @@ namespace SportsTech.Domain.Services
             return QueryAsync.SingleAsync(expression);
         }
 
-        protected virtual Task<TEntity> SingleOrDefaultAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
+        public virtual Task<TEntity> SingleOrDefaultAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
             return QueryAsync.SingleOrDefaultAsync(expression);
         }
 
-        protected virtual Task<bool> AnyAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
+        public virtual Task<bool> AnyAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
             return QueryAsync.AnyAsync(expression);
         }
 
-        protected virtual Task<int> CountAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
+        public virtual Task<int> CountAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression)
         {
             return QueryAsync.CountAsync(expression);
         }

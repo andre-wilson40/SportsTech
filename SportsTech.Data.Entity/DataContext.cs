@@ -69,7 +69,7 @@ namespace SportsTech.Data.Entity
                     m.MapLeftKey("PlayerId");
                     m.MapRightKey("SquadId");
                     m.ToTable("SquadMembers");
-                });            
+                });
         }
     }
 }
