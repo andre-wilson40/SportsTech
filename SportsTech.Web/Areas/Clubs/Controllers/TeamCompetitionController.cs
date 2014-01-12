@@ -34,7 +34,10 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             if (!string.IsNullOrWhiteSpace(dataTableParams.sSearch))
             {
-                records = await _teamCompetitionService.GetCompetitionsAsync(teamId, p => p.Season.Competition.Name.Contains(dataTableParams.sSearch));
+                records = await _teamCompetitionService.GetCompetitionsAsync(
+                    teamId, 
+                    p => p.Season.Competition.Name.Contains(dataTableParams.sSearch) ||
+                         p.Season.Name.Contains(dataTableParams.sSearch));
             }
 
             int filteredRecordCount = records.Count;

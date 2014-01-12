@@ -23,6 +23,7 @@
         aoColumnDefs: [],
         // define table layout
         sDom: "<'row-fluid dt-header'<'span4'f><'span4'r><'span4 hidden-phone'T>>t<'row-fluid dt-footer'<'span6 visible-desktop'i><'span6'pl>>",
+        //sDom: "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
         sPaginationType: "bootstrap",
         oLanguage: { sLengthMenu: "Show: _MENU_", sSearch: "" },
         aLengthMenu: [[20, 50, 100, -1], [20, 50, 100, "All"]],

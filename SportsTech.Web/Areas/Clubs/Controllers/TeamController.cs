@@ -60,8 +60,8 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             var club = await _clubService.GetByIdAsync(clubId);            
             var clubBreadCrumb = new ClubAdapter(club).GetBreadCrumb(Url);
 
-            CreateBreadCrumb(new BreadCrumb("Teams"),
-                             clubBreadCrumb
+            CreateBreadCrumb(clubBreadCrumb,
+                             new BreadCrumb("Teams")                             
             );
             
             return View("List");

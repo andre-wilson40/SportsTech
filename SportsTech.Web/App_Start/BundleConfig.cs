@@ -36,7 +36,9 @@ namespace SportsTech.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/themes/base/minified/juery-ui.min.css",
-                      "~/Content/bootstrap-datetimepicker.css"));
+                      "~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/bootstrap.datatables.css",
+                      "~/Content/responsive.tables.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base").Include(
                       "~/Content/themes/base/minified/jquery-ui.min.css"));
