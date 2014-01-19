@@ -1,5 +1,5 @@
 ﻿using SportsTech.Domain.Services;
-using SportsTech.Web.Areas.Clubs.Models;
+using SportsTech.Web.Areas.Clubs.Filters;
 using SportsTech.Web.Areas.Clubs.ViewModels.Competition;
 using SportsTech.Web.Models;
 using System;
@@ -72,7 +72,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return View("Create");
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Create(int clubId, CreateViewModel viewModel)
         {
             // Handle this better?
@@ -101,7 +101,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return View("Edit", viewModel);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int clubId, CreateViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
@@ -121,7 +121,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return RedirectToAction("List");
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id)
         {
             var competition = await _competitionService.GetByIdAsync(id);

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ErrorValueDictionary.cs" />
     <Compile Include="IErrorHandler.cs" />
+    <Compile Include="IMap.cs" />
     <Compile Include="Services\Core\ClubService.cs" />
     <Compile Include="Services\Core\CompetitionService.cs" />
     <Compile Include="Services\Core\EventService.cs" />

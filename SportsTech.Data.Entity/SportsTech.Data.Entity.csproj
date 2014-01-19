@@ -73,6 +73,18 @@
     <Compile Include="Migrations\201401120610325_CompetitionRegistrationLink.Designer.cs">
       <DependentUpon>201401120610325_CompetitionRegistrationLink.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201401180921057_EventParticipants-Score.cs" />
+    <Compile Include="Migrations\201401180921057_EventParticipants-Score.Designer.cs">
+      <DependentUpon>201401180921057_EventParticipants-Score.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401190626292_EventParticipants-Singular.cs" />
+    <Compile Include="Migrations\201401190626292_EventParticipants-Singular.Designer.cs">
+      <DependentUpon>201401190626292_EventParticipants-Singular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401190747542_EventParticipants-CircularDependency.cs" />
+    <Compile Include="Migrations\201401190747542_EventParticipants-CircularDependency.Designer.cs">
+      <DependentUpon>201401190747542_EventParticipants-CircularDependency.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -96,6 +108,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201401120610325_CompetitionRegistrationLink.resx">
       <DependentUpon>201401120610325_CompetitionRegistrationLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401180921057_EventParticipants-Score.resx">
+      <DependentUpon>201401180921057_EventParticipants-Score.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401190626292_EventParticipants-Singular.resx">
+      <DependentUpon>201401190626292_EventParticipants-Singular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401190747542_EventParticipants-CircularDependency.resx">
+      <DependentUpon>201401190747542_EventParticipants-CircularDependency.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

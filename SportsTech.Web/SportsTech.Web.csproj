@@ -214,11 +214,14 @@
     <Compile Include="Areas\Clubs\ClubsAreaRegistration.cs" />
     <Compile Include="Areas\Clubs\Controllers\ClubController.cs" />
     <Compile Include="Areas\Clubs\Controllers\CompetitionController.cs" />
+    <Compile Include="Areas\Clubs\Controllers\DrawController.cs" />
     <Compile Include="Areas\Clubs\Controllers\SeasonController.cs" />
     <Compile Include="Areas\Clubs\Controllers\TeamCompetitionController.cs" />
     <Compile Include="Areas\Clubs\Controllers\TeamController.cs" />
+    <Compile Include="Areas\Clubs\Mapping\Draw\CreateMap.cs" />
+    <Compile Include="Areas\Clubs\Mapping\Draw\DataTableMap.cs" />
     <Compile Include="Areas\Clubs\Mapping\TeamCompetition\RegisterMap.cs" />
-    <Compile Include="Areas\Clubs\Models\ClubAuthorizeAttribute.cs" />
+    <Compile Include="Areas\Clubs\Filters\ClubAuthorizeAttribute.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Competition\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Season\CreateViewModel.cs" />
@@ -242,6 +245,7 @@
     <Compile Include="Filters\HttpAjaxAttribute.cs" />
     <Compile Include="Filters\HttpAjaxRedirectFilter.cs" />
     <Compile Include="Filters\UnHandledExceptionAttribute.cs" />
+    <Compile Include="Filters\WebValidateAntiForgeryTokenAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,11 +263,11 @@
     <Compile Include="Services\IClubSeasonFacadeService.cs" />
     <Compile Include="Services\Implementation\ClubSeasonFacadeService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Areas\Events\ViewModels\Event\CreateViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Event\EditTeamViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Event\EditViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Draw\CreateViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Draw\EditTeamViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Draw\EditViewModel.cs" />
     <Compile Include="Areas\Events\ViewModels\Activity\ListViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Event\ListViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Draw\ListViewModel.cs" />
     <Compile Include="ViewModels\Shared\DeleteDialogViewModel.cs" />
     <Compile Include="ViewModels\Shared\KeyPairViewModel.cs" />
     <Compile Include="ViewModels\UserProfile\SiteHeaderViewModel.cs" />
@@ -355,7 +359,7 @@
     <Content Include="Areas\Events\Views\Activity\_Stoppages.cshtml" />
     <Content Include="Areas\Events\Views\Activity\_Available.cshtml" />
     <Content Include="Areas\Events\Views\Activity\_ActivityEvents.cshtml" />
-    <Content Include="Areas\Events\Views\Event\Edit.cshtml" />
+    <Content Include="Areas\Clubs\Views\Draw\Edit.cshtml" />
     <Content Include="Areas\Clubs\Views\web.config" />
     <Content Include="Areas\Clubs\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Clubs\Views\Shared\_Layout.cshtml" />
@@ -431,9 +435,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_SiteFooter.cshtml" />
     <Content Include="Views\Shared\_SiteHeader.cshtml" />
-    <Content Include="Areas\Events\Views\Event\List.cshtml" />
-    <Content Include="Areas\Events\Views\Event\Create.cshtml" />
-    <Content Include="Areas\Events\Views\Event\_EventForm.cshtml" />
+    <Content Include="Areas\Clubs\Views\Draw\List.cshtml" />
+    <Content Include="Areas\Clubs\Views\Draw\Create.cshtml" />
+    <Content Include="Areas\Clubs\Views\Draw\_EventForm.cshtml" />
     <Content Include="Views\Dialog\_DeleteDialog.cshtml" />
     <Content Include="Scripts\site.validate.unobtrusive.js" />
     <Content Include="Views\Shared\_breadCrumbTrail.cshtml" />
@@ -441,6 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Clubs\Models\" />
     <Folder Include="Areas\Clubs\ViewModels\Shared\" />
     <Folder Include="Areas\Events\Models\" />
     <Folder Include="Migrations\" />

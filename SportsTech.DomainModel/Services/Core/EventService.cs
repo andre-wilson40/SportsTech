@@ -22,9 +22,9 @@ namespace SportsTech.Domain.Services.Core
             return null;
         }
 
-        public async Task<Data.Model.Event> SingleAsync(int eventId)
+        public async Task<Data.Model.Event> GetByIdAsync(int id)
         {
-            return await SingleAsync(p => p.Id == eventId);
+            return await SingleAsync(p => p.Id == id);
         }
     }
 }

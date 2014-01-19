@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 
-namespace SportsTech.Web.Areas.Clubs.Models
+namespace SportsTech.Web.Areas.Clubs.Filters
 {
     /// <summary>
     /// http://hackwebwith.net/post/How-to-use-the-ASPNET-MVC-5-Filter-Overrides-Feature#.UsjsI7Qsy9U

@@ -70,6 +70,11 @@ namespace SportsTech.Data.Entity
                     m.MapRightKey("SquadId");
                     m.ToTable("SquadMembers");
                 });
+
+            modelBuilder.Entity<Event>()
+                .HasRequired(a => a.Participants)
+                .WithMany()
+                .HasForeignKey(a => a.ParticipantsId);
         }
     }
 }

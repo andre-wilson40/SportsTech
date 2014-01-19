@@ -19,7 +19,26 @@ namespace SportsTech.Data.Entity.Migrations
         protected override void Seed(SportsTech.Data.Entity.DataContext context)
         {
             AddRolesAsRequired(context);        
-            AddUsersAsRequired(context);     
+            AddUsersAsRequired(context);
+
+            AddParticipantsUniqueConstraintAsRequired(context);
+        }
+
+        /// <summary>
+        // http://weblogs.asp.net/manavi/archive/2011/05/01/associations-in-ef-4-1-code-first-part-5-one-to-one-foreign-key-associations.aspx
+        /// </summary>
+        /// <param name="context"></param>
+        private void AddParticipantsUniqueConstraintAsRequired(SportsTech.Data.Entity.DataContext context)
+        {
+            var results = context.Database.SqlQuery<int>(@"SELECT COUNT(*) 
+                                                              FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+                                                              WHERE TABLE_NAME='Event' 
+                                                              AND CONSTRAINT_NAME='uc_Participants'");
+
+            if (results.FirstOrDefault() == 0)
+            {
+                context.Database.ExecuteSqlCommand("ALTER TABLE Event ADD CONSTRAINT uc_Participants UNIQUE(ParticipantsId)");
+            }
         }
 
         private void AddUsersAsRequired(SportsTech.Data.Entity.DataContext context)

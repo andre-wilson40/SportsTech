@@ -19,21 +19,21 @@ namespace SportsTech.Data.Model
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey("EventId")]
-        public virtual Event Event { get; set; }
-        public int EventId { get; set; }
-
         public virtual ICollection<Teamsheet> Teamsheet { get; set; }
         public virtual ICollection<EventTag> EventTags { get; set; }
 
         [ForeignKey("TeamId")]
         public virtual Team Team { get; set; }
-        public int? TeamId { get; set; }
+        public int TeamId { get; set; }
 
         [ForeignKey("OppositionId")]
         public virtual Opposition Opposition { get; set; }
-        public int? OppositionId { get; set; }
+        public int OppositionId { get; set; }
 
         public bool IsHomeGame { get; set; }
+
+        public int ScoreFor { get; set; }
+
+        public int ScoreAgainst { get; set; }
     }
 }

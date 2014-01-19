@@ -1,4 +1,16 @@
-﻿@model SportsTech.Web.Areas.Events.ViewModels.Event.CreateViewModel
+﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Draw.CreateViewModel
+
+@Html.HiddenFor(model => model.SeasonId)
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.ReturnUrl)
+
+<div class="form-group">
+    @Html.LabelFor(model => model.TeamId, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-10">
+        @Html.DropDownListFor(model => model.TeamId, Model.Teams, string.Empty, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TeamId)
+    </div>
+</div>
 
 <div class="form-group">
     @Html.LabelFor(model => model.Against, new { @class = "control-label col-xs-2" })

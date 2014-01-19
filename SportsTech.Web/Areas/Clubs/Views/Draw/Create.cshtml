@@ -1,10 +1,10 @@
-﻿@model SportsTech.Web.Areas.Events.ViewModels.Event.CreateViewModel
+﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Draw.CreateViewModel
 
 @{
     ViewBag.Title = "Create new event";
 }
 
-@using (Html.BeginForm("Create", "Event", FormMethod.Post, new { id = "CreateNewEvent" })) 
+@using (Html.BeginForm("Create", "Draw", FormMethod.Post, new { id = "CreateNewEvent" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -27,7 +27,7 @@
     <script>
         $(function() {
             $('#cancel-event-btn').on('click', function () {
-                site.core.redirect('@Url.Action("Index", "Dashboard")');
+                site.core.redirect('@Model.ReturnUrl');
             });
         });
     </script>

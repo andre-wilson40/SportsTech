@@ -1,5 +1,5 @@
 ﻿using SportsTech.Domain.Services;
-using SportsTech.Web.Areas.Clubs.Models;
+using SportsTech.Web.Areas.Clubs.Filters;
 using SportsTech.Web.Areas.Clubs.ViewModels.Season;
 using SportsTech.Web.Models;
 using SportsTech.Web.Services;
@@ -89,7 +89,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Create(int clubId, CreateViewModel viewModel)
         {
             if (!ModelState.IsValid) return Create(viewModel.CompetitionId);
@@ -123,7 +123,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int clubId, CreateViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
@@ -145,7 +145,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id)
         {
             var seasonService =  _seasonServiceFactory.Create();

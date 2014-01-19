@@ -63,7 +63,7 @@ namespace SportsTech.Domain.Tests.Services.Core
             var eventService = new EventService(uow);
 
             // Act
-            var record = await eventService.SingleAsync(2);
+            var record = await eventService.GetByIdAsync(2);
 
             // Assert
             Assert.IsNotNull(record);

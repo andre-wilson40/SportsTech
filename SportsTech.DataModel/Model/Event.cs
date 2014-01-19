@@ -12,7 +12,6 @@ namespace SportsTech.Data.Model
     {
         public Event()
         {
-            Participants = new HashSet<EventParticipant>();
             Stoppages = new HashSet<Stoppage>();
         }
 
@@ -27,7 +26,10 @@ namespace SportsTech.Data.Model
         public virtual SeasonRound Round { get; set; }
         public int SeasonRoundId { get; set; }
 
-        public virtual ICollection<EventParticipant> Participants { get; set; }
+        [ForeignKey("ParticipantsId")]
+        public virtual EventParticipant Participants { get; set; }
+        public int ParticipantsId { get; set; }
+
         public virtual ICollection<Stoppage> Stoppages { get; set; }
 
         public DateTime EventDate { get; set; }

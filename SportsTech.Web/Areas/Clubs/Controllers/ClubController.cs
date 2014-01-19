@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SportsTech.Domain.Services;
-using SportsTech.Web.Areas.Clubs.Models;
+using SportsTech.Web.Areas.Clubs.Filters;
 using SportsTech.Web.Areas.Clubs.ViewModels;
 using SportsTech.Web.Areas.Clubs.ViewModels.Club;
 using SportsTech.Web.Controllers;
@@ -81,7 +81,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpPost, 
-        ValidateAntiForgeryToken, 
+        Web.Filters.WebValidateAntiForgeryToken, 
         OverrideClubAuthorize,
         Authorize]
         public ActionResult Create(CreateViewModel viewModel)
@@ -99,7 +99,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(int clubId)
+        public ActionResult Delete(int clubId)
         {
             // TODO: Currently we do not allow deleting of clubs
             return RedirectToAction("Index");

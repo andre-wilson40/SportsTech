@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using SportsTech.Domain.Services;
-using SportsTech.Web.Areas.Clubs.Models;
+using SportsTech.Web.Areas.Clubs.Filters;
 using SportsTech.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -103,7 +103,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return View("Register", viewModel);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Register(int clubId, Areas.Clubs.ViewModels.TeamCompetition.RegisterViewModel viewModel)
         {
             if (!ModelState.IsValid) return await Register(viewModel.TeamId, clubId);
@@ -123,7 +123,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return RedirectToAction("List", new { id = viewModel.TeamId });
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id)
         {
             var registration = await _teamCompetitionService.GetByIdAsync(id);

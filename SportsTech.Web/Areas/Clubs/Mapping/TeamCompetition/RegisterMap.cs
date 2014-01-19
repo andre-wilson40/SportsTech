@@ -9,7 +9,7 @@ using System.Web;
 
 namespace SportsTech.Web.Areas.Clubs.Mapping.TeamCompetition
 {
-    public class RegisterMap
+    public class RegisterMap : Domain.IMap<RegisterViewModel, Data.Model.CompetitionRegistration>
     {
         private readonly ITeamCompetitionService _competitionService;
 
