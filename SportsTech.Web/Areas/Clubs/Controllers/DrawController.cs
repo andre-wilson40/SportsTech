@@ -29,10 +29,11 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             ITeamService teamService)
         {
             _unitOfWork = unitOfWork;
-            _eventService = eventService;
-            _seasonServiceFactory = seasonServiceFactory;
-            _seasonService = clubSeasonService;
-            _teamService = teamService;
+            _eventService = eventService; // DataTable M, Create, Edit
+            _seasonServiceFactory = seasonServiceFactory; // List BC, Create
+            _seasonService = clubSeasonService; // List BC, Create
+            _teamService = teamService; // Create VM, Edit
+            // SeasonRound (unitOfwork)
         }
 
         [HttpPost]
@@ -87,9 +88,11 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
         public async Task<ActionResult> Create(int seasonId)
         {
             var teams = await _teamService.GetAllAsync();
+            var rounds = _unitOfWork.GetRepository<Data.Model.SeasonRound>().AsQueryable().ToList();
+            
             var returnUrl = Url.Action("List", new { id = seasonId });
 
-            var mapper = new Mapping.Draw.CreateViewModelMap(teams, returnUrl);
+            var mapper = new Mapping.Draw.CreateViewModelMap(teams, rounds, returnUrl);
             var viewModel = mapper.Map(new Data.Model.Event());
 
             // Returns a partial for creating a game
@@ -148,9 +151,10 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             if (ev == null) return ResourceNotFound();
 
             var teams = await _teamService.GetAllAsync();
+            var rounds = _unitOfWork.GetRepository<Data.Model.SeasonRound>().AsQueryable().ToList();
             var returnUrl = Url.Action("List", new { id = ev.SeasonId });
 
-            var mapper = new Mapping.Draw.CreateViewModelMap(teams,returnUrl);
+            var mapper = new Mapping.Draw.CreateViewModelMap(teams,rounds, returnUrl);
             var viewModel = mapper.Map(ev);
 
             return View("Edit", viewModel);

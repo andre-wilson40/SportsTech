@@ -35,11 +35,13 @@ namespace SportsTech.Web.Areas.Clubs.Mapping.Draw
     public class CreateViewModelMap : SportsTech.Domain.IMap<ViewModels.Draw.CreateViewModel, Data.Model.Event>
     {
         private IEnumerable<Data.Model.Team> _teams;
+        private IEnumerable<Data.Model.SeasonRound> _rounds;
         private string _returnUrl;
 
-        public CreateViewModelMap(IEnumerable<Data.Model.Team> teams, string returnUrl)
+        public CreateViewModelMap(IEnumerable<Data.Model.Team> teams, IEnumerable<Data.Model.SeasonRound> rounds, string returnUrl)
         {
             _teams = teams;
+            _rounds = rounds;
             _returnUrl = returnUrl;
         }
 
@@ -50,12 +52,19 @@ namespace SportsTech.Web.Areas.Clubs.Mapping.Draw
                 SeasonId = source.SeasonId,                
                 EventDate = DateTime.Now,
                 ReturnUrl = _returnUrl,
-                IsHomeGame = source.Participants.IsHomeGame,
+                IsHomeGame = false,
                 Against = string.Empty,
-                TeamId = source.Participants.TeamId,
+                TeamId = 0,
                 Teams = _teams.Select(p => new SelectListItem
                 {
-                    Selected =  source.Participants.TeamId == p.Id,
+                    Selected =  false,
+                    Text = p.Name,
+                    Value = p.Id.ToString()
+                }).ToList(),
+                RoundId = 0,
+                Rounds = _rounds.Select(p => new SelectListItem
+                {
+                    Selected = source.SeasonRoundId == p.Id,
                     Text = p.Name,
                     Value = p.Id.ToString()
                 }).ToList()

@@ -5,6 +5,14 @@
 @Html.HiddenFor(model => model.ReturnUrl)
 
 <div class="form-group">
+    @Html.LabelFor(model => model.RoundId, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-10">
+        @Html.DropDownListFor(model => model.RoundId, Model.Rounds, string.Empty, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.RoundId)
+    </div>
+</div>
+
+<div class="form-group">
     @Html.LabelFor(model => model.TeamId, new { @class = "control-label col-xs-2" })
     <div class="col-xs-10">
         @Html.DropDownListFor(model => model.TeamId, Model.Teams, string.Empty, new { @class = "form-control" })

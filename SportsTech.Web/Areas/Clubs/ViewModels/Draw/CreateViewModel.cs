@@ -15,6 +15,7 @@ namespace SportsTech.Web.Areas.Clubs.ViewModels.Draw
         public CreateViewModel()
         {
             Teams = new List<SelectListItem>();
+            Rounds = new List<SelectListItem>();
         }
 
         public int? Id { get; set; }
@@ -22,6 +23,10 @@ namespace SportsTech.Web.Areas.Clubs.ViewModels.Draw
         public List<SelectListItem> Teams { get; set; }
         [DisplayName("Team")]
         public int TeamId { get; set; }
+
+        public List<SelectListItem> Rounds { get; set; }
+        [DisplayName("Round")]
+        public int RoundId { get; set; }
 
         [DisplayName("Against")]
         public string Against { get; set; }
@@ -47,6 +52,7 @@ namespace SportsTech.Web.Areas.Clubs.ViewModels.Draw
             RuleFor(vm => vm.EventDate).NotEmpty().WithMessage("Every event must have a date it is occuring on");
             RuleFor(vm => vm.Against).NotEmpty().WithMessage("Please specify the opposition for this event");
             RuleFor(vm => vm.SeasonId).NotEmpty();
+            RuleFor(vm => vm.RoundId).NotEmpty();
         }
     }
 }
