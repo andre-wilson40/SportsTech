@@ -10,8 +10,8 @@
             ],
             dataTableCreateUrl:'@Url.Action("Register", new { teamId = Model })',
             dataTableLoadUrl: '@Url.Action("DataTable", new { teamId = Model })',
-          //  dataTableEditUrl: '@Url.Action("Edit", "TeamCompetition")',
-            dataTableDashboardUrl: '', // Goes to the event dashboard '@Url.Action("List", "Draw")',
+            //dataTableEditUrl: '@Url.Action("List", "Season")',
+            dataTableDashboardUrl: '@Url.Action("List", "Season")', //'', // Goes to the event dashboard '@Url.Action("List", "Draw")',
             dataTableShowDelete: true
         };
 

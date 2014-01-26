@@ -1,9 +1,5 @@
 ﻿@model SportsTech.Web.Areas.Clubs.ViewModels.Draw.CreateViewModel
 
-@Html.HiddenFor(model => model.SeasonId)
-@Html.HiddenFor(model => model.Id)
-@Html.HiddenFor(model => model.ReturnUrl)
-
 <div class="form-group">
     @Html.LabelFor(model => model.RoundId, new { @class = "control-label col-xs-2" })
     <div class="col-xs-10">
@@ -50,8 +46,15 @@
 
 <div class="form-group">
     @Html.LabelFor(model => model.EventDate, new { @class = "control-label col-xs-2" })
-    <div class="col-xs-10">
-        @Html.TextBoxFor(model => model.EventDate, new { @class = "form-control" })
+    <div class="col-xs-3">
+        @Html.EditorFor(model => model.EventDate)
         @Html.ValidationMessageFor(model => model.EventDate)
     </div>
+    <div class="col-xs-7">&nbsp;</div>
+</div>
+
+<div>
+    @Html.HiddenFor(model => model.SeasonId)
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ReturnUrl)
 </div>

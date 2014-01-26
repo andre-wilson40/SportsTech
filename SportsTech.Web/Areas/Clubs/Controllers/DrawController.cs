@@ -93,7 +93,11 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             var returnUrl = Url.Action("List", new { id = seasonId });
 
             var mapper = new Mapping.Draw.CreateViewModelMap(teams, rounds, returnUrl);
-            var viewModel = mapper.Map(new Data.Model.Event());
+            var viewModel = mapper.Map(new Data.Model.Event() 
+            {
+                EventDate = DateTime.Now,
+                SeasonId = seasonId
+            });
 
             // Returns a partial for creating a game
             return View("Create", viewModel);
@@ -106,30 +110,19 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             // Handle this better?
             if (!ModelState.IsValid) return Create(viewModel.SeasonId).Result;
 
-            var season = await _seasonServiceFactory.Create().GetByIdAsync(viewModel.SeasonId);                       
-            if(season == null) return ResourceNotFound();
-
+            var season = await _seasonServiceFactory.Create().GetByIdAsync(viewModel.SeasonId);
             var team = await _teamService.GetByIdAsync(viewModel.TeamId);
-            if(team == null) return ResourceNotFound();
 
             var roundRepository = _unitOfWork.GetRepository<Data.Model.SeasonRound>();
-            var round = await roundRepository.SingleOrDefaultAsync(p => p.Name == "Round 1");
+            var round = await roundRepository.SingleOrDefaultAsync(p => p.Id == viewModel.RoundId);
 
-            if(round == null) 
+            if (season == null || team == null || round == null)
             {
-                round = new Data.Model.SeasonRound { Name = "Round 1" };
-                roundRepository.Add(round);
+                return ResourceNotFound();
             }
-
-            // Ensure one round for now
-            var ev = new Data.Model.Event
-            {
-                Season = season,     
-                Round = round
-            };
-
-            var mapper = new Mapping.Draw.CreateDataModelMap(ev);
-            ev = mapper.Map(viewModel);
+           
+            var mapper = new Mapping.Draw.CreateDataModelMap();
+            var ev = mapper.Map(viewModel);
             var errorHandler = CreateModelErrorHandler();
 
             if (!await _eventService.CanAdd(ev, errorHandler))
@@ -142,6 +135,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             return Redirect(viewModel.ReturnUrl);
         }
+
 
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
@@ -160,16 +154,50 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             return View("Edit", viewModel);
         }
 
-        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
-        public ActionResult Edit(ViewModels.Draw.CreateViewModel viewModel)
-        {
-            return RedirectToAction("List");
-        }
 
         [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Edit(ViewModels.Draw.CreateViewModel viewModel)
         {
-            return RedirectToAction("List");
+            // Handle this better?
+            if (!ModelState.IsValid) return await Create(viewModel.SeasonId);
+
+            var season = await _seasonServiceFactory.Create().GetByIdAsync(viewModel.SeasonId);            
+            var team = await _teamService.GetByIdAsync(viewModel.TeamId);
+            
+            var roundRepository = _unitOfWork.GetRepository<Data.Model.SeasonRound>();
+            var round = await roundRepository.SingleOrDefaultAsync(p => p.Id == viewModel.RoundId);
+
+            var ev = await _eventService.GetByIdAsync(viewModel.Id.GetValueOrDefault());
+
+            if (ev == null || season == null || team == null || round == null)
+            {
+                return ResourceNotFound();
+            }
+
+            var mapper = new Mapping.Draw.CreateDataModelMap(ev);
+            mapper.Map(viewModel);
+            var errorHandler = CreateModelErrorHandler();
+            
+            if(!await _eventService.CanAdd(ev,errorHandler)) {
+                return await Create(viewModel.SeasonId);
+            }
+
+            _eventService.SaveAnyChanges();
+
+            return Redirect(viewModel.ReturnUrl);
+        }
+
+
+        [HttpPost, Web.Filters.WebValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var ev = await _eventService.GetByIdAsync(id);
+            if (ev == null) return ResourceNotFound();
+
+            _eventService.Remove(ev);
+            _eventService.SaveAnyChanges();
+
+            return RedirectToAction("List", new { id = ev.SeasonId });
         }
 	}
 }

@@ -34,7 +34,7 @@ namespace SportsTech.Domain.Services.Core
             return _baseService.GetAllAsync(p => p.TeamId == teamId);
         }
 
-        public async Task<List<Data.Model.CompetitionRegistration>> GetCompetitionsAsync(int teamId, System.Linq.Expressions.Expression<Func<Data.Model.CompetitionRegistration, bool>> expression)
+        public Task<List<Data.Model.CompetitionRegistration>> GetCompetitionsAsync(int teamId, System.Linq.Expressions.Expression<Func<Data.Model.CompetitionRegistration, bool>> expression)
         {
             System.Linq.Expressions.Expression<Func<Data.Model.CompetitionRegistration, bool>> teamExpr = registration => registration.TeamId == teamId;
             
@@ -44,13 +44,11 @@ namespace SportsTech.Domain.Services.Core
             // http://www.dhuvelle.com/2013_11_01_archive.html
             // However I'm hoping the original code will be updated instead to support this
 
-            //var builder = PredicateBuilder.True<Data.Model.CompetitionRegistration>();
-            //var filter = builder.And(teamExpr).And(expression);
-            //var filter = builder.And(expression);
+            var builder = PredicateBuilder.True<Data.Model.CompetitionRegistration>();
+            var filter = builder.And(teamExpr).And(expression);
             
             // For now we don't have many registrations per team anyway so happy to do the second expr on an IEnumerable
-            var registrations = await _baseService.GetAllAsync(teamExpr);
-            return registrations.Where(expression.Compile()).ToList();
+            return _baseService.GetAllAsync(filter.Expand());
         }
 
         public async Task<List<Data.Model.Season>> GetUnRegisteredCompetitionsAsync(int teamId, int clubId)

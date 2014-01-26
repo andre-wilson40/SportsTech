@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit event";
 }
 
-@using (Html.BeginForm("Edit", "Event", FormMethod.Post, new { id = "EditNewEvent" }))
+@using (Html.BeginForm("Edit", "Draw", FormMethod.Post, new { id = "EditNewEvent" }))
 {
     @Html.AntiForgeryToken()
 
@@ -27,7 +27,7 @@
     <script>
         $(function() {
             $('#cancel-event-btn').on('click', function () {
-                site.core.redirect('@Url.Action("List", "Event")');
+                site.core.redirect('@Model.ReturnUrl');
             });
         });
     </script>

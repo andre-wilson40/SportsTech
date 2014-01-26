@@ -10,14 +10,22 @@ namespace SportsTech.Web.Areas.Clubs.Mapping.Draw
     {
         private readonly Data.Model.Event _event;
 
+        public CreateDataModelMap()
+            : this(new Data.Model.Event())
+        {
+
+        }
+
         public CreateDataModelMap(Data.Model.Event ev)
         {
             _event = ev;
         }
 
         public Data.Model.Event Map(ViewModels.Draw.CreateViewModel source)
-        {            
+        {
             _event.EventDate = source.EventDate;
+            _event.SeasonRoundId = source.RoundId;
+            _event.SeasonId = source.SeasonId;
             _event.Participants = new Data.Model.EventParticipant
                 {
                     IsHomeGame = source.IsHomeGame,
@@ -25,7 +33,7 @@ namespace SportsTech.Web.Areas.Clubs.Mapping.Draw
                     Opposition = new Data.Model.Opposition // TODO:  Use existing if present
                     {
                         Name = source.Against
-                    }                    
+                    }
                 };
 
             return _event;
@@ -47,21 +55,25 @@ namespace SportsTech.Web.Areas.Clubs.Mapping.Draw
 
         public ViewModels.Draw.CreateViewModel Map(Data.Model.Event source)
         {
+            var participants = source.Participants ?? new Data.Model.EventParticipant();
+            var opposition = participants.Opposition ?? new Data.Model.Opposition();
+            var round = source.Round ?? new Data.Model.SeasonRound();
+
             return new ViewModels.Draw.CreateViewModel
             {
                 SeasonId = source.SeasonId,                
-                EventDate = DateTime.Now,
+                EventDate = source.EventDate,
                 ReturnUrl = _returnUrl,
-                IsHomeGame = false,
-                Against = string.Empty,
-                TeamId = 0,
+                IsHomeGame = participants.IsHomeGame,
+                Against = opposition.Name,
+                TeamId = participants.TeamId,                
                 Teams = _teams.Select(p => new SelectListItem
                 {
-                    Selected =  false,
+                    Selected = participants.TeamId == p.Id,
                     Text = p.Name,
                     Value = p.Id.ToString()
                 }).ToList(),
-                RoundId = 0,
+                RoundId = round.Id,
                 Rounds = _rounds.Select(p => new SelectListItem
                 {
                     Selected = source.SeasonRoundId == p.Id,
