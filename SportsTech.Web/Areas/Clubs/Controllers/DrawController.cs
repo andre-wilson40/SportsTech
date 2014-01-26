@@ -207,7 +207,7 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
             if (ev == null) return ResourceNotFound();
 
             var viewModel = new ViewModels.Draw.DashboardViewModel();
-
+            
             return View("Dashboard", viewModel);
         }
 	}
