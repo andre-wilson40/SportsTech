@@ -199,5 +199,16 @@ namespace SportsTech.Web.Areas.Clubs.Controllers
 
             return RedirectToAction("List", new { id = ev.SeasonId });
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Dashboard(int id)
+        {
+            var ev = await _eventService.GetByIdAsync(id);
+            if (ev == null) return ResourceNotFound();
+
+            var viewModel = new ViewModels.Draw.DashboardViewModel();
+
+            return View("Dashboard", viewModel);
+        }
 	}
 }

@@ -14,7 +14,7 @@
     <RootNamespace>SportsTech.Web</RootNamespace>
     <AssemblyName>SportsTech.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -224,21 +224,18 @@
     <Compile Include="Areas\Clubs\Filters\ClubAuthorizeAttribute.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Club\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Competition\CreateViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Draw\DashboardViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Draw\TeamViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Season\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\TeamCompetition\RegisterViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Team\CreateViewModel.cs" />
-    <Compile Include="Areas\Events\Controllers\ActivityController.cs" />
-    <Compile Include="Areas\Events\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Events\EventsAreaRegistration.cs" />
-    <Compile Include="Areas\Events\ViewModels\Activity\ActivityEventViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Activity\AvailableViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Activity\PersonViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Activity\ListItemViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Dashboard\DashboardViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Dashboard\TeamViewModel.cs" />
+    <Compile Include="Areas\Clubs\Controllers\ActivityController.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Activity\ActivityEventViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Activity\AvailableViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Activity\PersonViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Activity\ListItemViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseAuthenticatedController.cs" />
-    <Compile Include="Areas\Events\Controllers\EventController.cs" />
     <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
@@ -266,7 +263,7 @@
     <Compile Include="Areas\Clubs\ViewModels\Draw\CreateViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Draw\EditTeamViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Draw\EditViewModel.cs" />
-    <Compile Include="Areas\Events\ViewModels\Activity\ListViewModel.cs" />
+    <Compile Include="Areas\Clubs\ViewModels\Activity\ListViewModel.cs" />
     <Compile Include="Areas\Clubs\ViewModels\Draw\ListViewModel.cs" />
     <Compile Include="ViewModels\Shared\DeleteDialogViewModel.cs" />
     <Compile Include="ViewModels\Shared\KeyPairViewModel.cs" />
@@ -349,16 +346,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Areas\Events\Views\web.config" />
-    <Content Include="Areas\Events\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Events\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Events\Views\Activity\_List.cshtml" />
-    <Content Include="Areas\Events\Views\Dashboard\View.cshtml" />
-    <Content Include="Areas\Events\Views\Dashboard\Team.cshtml" />
-    <Content Include="Areas\Events\Views\Activity\_SystemDefined.cshtml" />
-    <Content Include="Areas\Events\Views\Activity\_Stoppages.cshtml" />
-    <Content Include="Areas\Events\Views\Activity\_Available.cshtml" />
-    <Content Include="Areas\Events\Views\Activity\_ActivityEvents.cshtml" />
+    <Content Include="Areas\Clubs\Views\Activity\_List.cshtml" />
+    <Content Include="Areas\Clubs\Views\Draw\Dashboard.cshtml" />
+    <Content Include="Areas\Clubs\Views\Draw\Team.cshtml" />
+    <Content Include="Areas\Clubs\Views\Activity\_SystemDefined.cshtml" />
+    <Content Include="Areas\Clubs\Views\Activity\_Stoppages.cshtml" />
+    <Content Include="Areas\Clubs\Views\Activity\_Available.cshtml" />
+    <Content Include="Areas\Clubs\Views\Activity\_ActivityEvents.cshtml" />
     <Content Include="Areas\Clubs\Views\Draw\Edit.cshtml" />
     <Content Include="Areas\Clubs\Views\web.config" />
     <Content Include="Areas\Clubs\Views\_ViewStart.cshtml" />
@@ -447,7 +441,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Clubs\Models\" />
     <Folder Include="Areas\Clubs\ViewModels\Shared\" />
-    <Folder Include="Areas\Events\Models\" />
     <Folder Include="Migrations\" />
     <Folder Include="ViewModels\Dashboard\" />
     <Folder Include="ViewModels\Home\" />
